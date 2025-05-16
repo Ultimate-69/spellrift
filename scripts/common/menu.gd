@@ -43,7 +43,8 @@ func _ready() -> void:
 				"Failed to load save data. Please try restarting the game.", 
 				"Save Load Fail")
 				
-	#continue_button.visible = SaveManager.save_dict["is_in_run"]
+	continue_button.visible = SaveManager.save_dict["is_in_run"]
+	
 	if not continue_button.visible:
 		new_button.grab_focus()
 		quit_button.focus_neighbor_bottom = new_button.get_path()
