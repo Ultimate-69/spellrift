@@ -1,0 +1,34 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="SpellRift"
+run/main_scene="uid://dtf6fht1524lv"
+config/features=PackedStringArray("4.4", "GL Compatibility")
+config/icon="res://icon.svg"
+
+[autoload]
+
+SaveManager="*res://scripts/globals/save_manager.gd"
+Todo="*res://scripts/globals/todo.gd"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "blue",
+"res://scenes/": "red",
+"res://scripts/": "yellow"
+}
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
