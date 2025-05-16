@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtf6fht1524lv"]
+[gd_scene load_steps=6 format=3 uid="uid://dtf6fht1524lv"]
 
 [ext_resource type="Script" uid="uid://448khrqia3a0" path="res://scripts/common/menu.gd" id="1_yqeox"]
+[ext_resource type="FontFile" uid="uid://c73vy11e137o2" path="res://assets/fonts/Rubik/static/Rubik-Regular.ttf" id="2_4ytvr"]
+[ext_resource type="Theme" uid="uid://iwbldj18fe60" path="res://themes/menu_theme.tres" id="3_con2f"]
+[ext_resource type="FontFile" uid="uid://q41xyy8rvn3r" path="res://assets/fonts/Uncial_Antiqua/UncialAntiqua-Regular.ttf" id="4_mhnvy"]
+[ext_resource type="PackedScene" uid="uid://b5kmyhb8lknkd" path="res://components/ui_navigator.tscn" id="5_4ytvr"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -10,18 +14,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqeox")
-
-[node name="Title" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -255.0
-offset_right = 255.0
-offset_bottom = 175.0
-grow_horizontal = 2
-theme_override_font_sizes/font_size = 128
-text = "SpellRift"
 
 [node name="Version" type="Label" parent="."]
 layout_mode = 1
@@ -33,6 +25,75 @@ offset_top = 604.0
 offset_right = 558.0
 offset_bottom = 636.0
 grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_4ytvr")
 theme_override_font_sizes/font_size = 23
 text = "version"
 horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 820.0
+offset_top = 169.0
+offset_right = 1134.0
+offset_bottom = 581.0
+theme_override_constants/separation = 25
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Continue" type="Button" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../../CenterContainer5/Quit")
+theme = ExtResource("3_con2f")
+text = "Continue Run"
+
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="New" type="Button" parent="VBoxContainer/CenterContainer2"]
+layout_mode = 2
+theme = ExtResource("3_con2f")
+text = "New Run"
+
+[node name="CenterContainer3" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" type="Button" parent="VBoxContainer/CenterContainer3"]
+layout_mode = 2
+theme = ExtResource("3_con2f")
+text = "Settings"
+
+[node name="CenterContainer4" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Credits" type="Button" parent="VBoxContainer/CenterContainer4"]
+layout_mode = 2
+theme = ExtResource("3_con2f")
+text = "Credits"
+
+[node name="CenterContainer5" type="CenterContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="VBoxContainer/CenterContainer5"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../../CenterContainer/Continue")
+theme = ExtResource("3_con2f")
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -159.0
+offset_top = 39.0
+offset_right = 159.0
+offset_bottom = 149.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_mhnvy")
+theme_override_font_sizes/font_size = 80
+text = "SpellRift"
+
+[node name="UINavigator" parent="." node_paths=PackedStringArray("button_container") instance=ExtResource("5_4ytvr")]
+layout_mode = 1
+button_container = NodePath("../VBoxContainer")

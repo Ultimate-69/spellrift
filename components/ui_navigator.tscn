@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5kmyhb8lknkd"]
+
+[ext_resource type="Script" uid="uid://bainitw58ep5x" path="res://scripts/components/ui_navigator.gd" id="1_aea57"]
+[ext_resource type="AudioStream" uid="uid://dw1xbm742q83v" path="res://assets/sfx/click1.wav" id="2_jn0i7"]
+[ext_resource type="AudioStream" uid="uid://b08cf2m0odxtv" path="res://assets/sfx/confirm.wav" id="3_jn0i7"]
+
+[node name="UINavigator" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_aea57")
+
+[node name="MoveSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_jn0i7")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jn0i7")

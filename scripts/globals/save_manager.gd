@@ -3,7 +3,7 @@ extends Node
 const SAVE_PATH = "user://save.spell"
 const PASSWORD = "9fa!DN49D+rBS^Hdap2^Ce&!WD^uxaRSj3f#UfdFHdgQ7EgY)g)d4YbTamB$J#TY"
 
-var save_dict: Dictionary[String, Variant] = {
+var save_dict: Dictionary = {
 	# Global Data
 	"runs" = 0,
 	"kills" = 0,
@@ -44,6 +44,6 @@ func load_game():
 			# other error that stopped from opening file
 			return 2
 	else:
-		var data: Dictionary[String, Variant] = JSON.parse_string(file.get_as_text())
+		var data: Dictionary = JSON.parse_string(file.get_as_text())
 		file.close()
 		return data
