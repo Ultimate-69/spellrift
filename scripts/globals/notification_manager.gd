@@ -19,7 +19,7 @@ func send_notification(body_text: String, title_text: String) -> void:
 	title.text = title_text
 	body.text = body_text
 	
-	await GlobalMethods.wait(4)
+	await Globals.wait(4)
 	
 	tween = create_tween()
 	await tween.tween_property(panel, "position", START_POS, 0.3).finished

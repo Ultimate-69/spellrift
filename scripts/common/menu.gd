@@ -1,6 +1,10 @@
 extends Control
 
+@onready var version: Label = $Version
+
 func _ready() -> void:
+	version.text = Globals.VERSION_NUM
+	
 	var save_data: Variant = SaveManager.load_game()
 	if save_data == 1:
 		pass
