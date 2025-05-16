@@ -3,7 +3,26 @@ extends Node
 const SAVE_PATH = "user://save.spell"
 const PASSWORD = "9fa!DN49D+rBS^Hdap2^Ce&!WD^uxaRSj3f#UfdFHdgQ7EgY)g)d4YbTamB$J#TY"
 
-var save_dict: Dictionary[String, Variant] = {}
+var save_dict: Dictionary[String, Variant] = {
+	# Global Data
+	"runs" = 0,
+	"kills" = 0,
+	"gold" = 0, # meta-currency
+	"characters" = [],
+	"spells_discovered" = [],
+	"runes_found" = [],
+	"saved_rune" = "none",
+	# Per-Run Data
+	"is_in_run" = false,
+	"shards" = 0, # per-run currency
+	"current_floor" = 1,
+	"current_spells" = [["none", "none", "none"]], 
+	# each array entry above is a spell, and
+	# each spell is divided into: element | shape | modifier
+	"current_character" = "apprentice", # default character
+	"inventory" = [],
+	"upgrades" = [],
+}
 
 func save_game() -> void:
 	var file = FileAccess.open_encrypted_with_pass(SAVE_PATH,

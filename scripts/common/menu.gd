@@ -7,6 +7,8 @@ func _ready() -> void:
 	
 	var save_data: Variant = SaveManager.load_game()
 	if save_data == 1:
+		# no save
+		SaveManager.save_game()
 		pass
 	elif save_data == 2:
 		NotificationManager.send_notification(
