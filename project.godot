@@ -29,9 +29,13 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
-"res://assets/": "blue",
+"res://addons/": "purple",
+"res://assets/": "teal",
+"res://components/": "pink",
 "res://scenes/": "red",
-"res://scripts/": "yellow"
+"res://scripts/": "yellow",
+"res://shaders/": "gray",
+"res://themes/": "blue"
 }
 
 [rendering]

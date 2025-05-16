@@ -1,10 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtf6fht1524lv"]
+[gd_scene load_steps=12 format=3 uid="uid://dtf6fht1524lv"]
 
 [ext_resource type="Script" uid="uid://448khrqia3a0" path="res://scripts/common/menu.gd" id="1_yqeox"]
 [ext_resource type="FontFile" uid="uid://c73vy11e137o2" path="res://assets/fonts/Rubik/static/Rubik-Regular.ttf" id="2_4ytvr"]
 [ext_resource type="Theme" uid="uid://iwbldj18fe60" path="res://themes/menu_theme.tres" id="3_con2f"]
 [ext_resource type="FontFile" uid="uid://q41xyy8rvn3r" path="res://assets/fonts/Uncial_Antiqua/UncialAntiqua-Regular.ttf" id="4_mhnvy"]
 [ext_resource type="PackedScene" uid="uid://b5kmyhb8lknkd" path="res://components/ui_navigator.tscn" id="5_4ytvr"]
+[ext_resource type="Texture2D" uid="uid://b58wrdk1inej4" path="res://icon.svg" id="6_g3eks"]
+[ext_resource type="Shader" uid="uid://dk7xb7ui7hw8q" path="res://shaders/ui/texture_rect_blur.gdshader" id="6_v86rl"]
+[ext_resource type="Texture2D" uid="uid://dsbi1oninkkrg" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_escape.svg" id="8_13sgg"]
+[ext_resource type="AudioStream" uid="uid://d0v5qa8qxni1o" path="res://assets/sfx/back.wav" id="9_i6lef"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v86rl"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13sgg"]
+shader = ExtResource("6_v86rl")
+shader_parameter/lod = 5.0
+shader_parameter/mix_percentage = 0.295
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -97,3 +110,73 @@ text = "SpellRift"
 [node name="UINavigator" parent="." node_paths=PackedStringArray("button_container") instance=ExtResource("5_4ytvr")]
 layout_mode = 1
 button_container = NodePath("../VBoxContainer")
+
+[node name="UIPanels" type="Node" parent="."]
+
+[node name="Credits" type="Panel" parent="UIPanels"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v86rl")
+
+[node name="Blur" type="TextureRect" parent="UIPanels/Credits"]
+material = SubResource("ShaderMaterial_13sgg")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("6_g3eks")
+
+[node name="Label" type="Label" parent="UIPanels/Credits"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -70.5
+offset_top = 41.0
+offset_right = 70.5
+offset_bottom = 84.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_4ytvr")
+theme_override_font_sizes/font_size = 66
+text = "Credits"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIPanels/Credits"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 148.0
+offset_right = 1082.0
+offset_bottom = 606.0
+focus_mode = 2
+
+[node name="Label" type="Label" parent="UIPanels/Credits/ScrollContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Ultimate - Programmer
+ZaoSplat - SFX"
+
+[node name="BackKey" type="TextureRect" parent="UIPanels/Credits"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 9.0
+offset_right = 79.0
+offset_bottom = 73.0
+texture = ExtResource("8_13sgg")
+
+[node name="BackKeyLabel" type="Label" parent="UIPanels/Credits"]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 22.0
+offset_right = 156.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_4ytvr")
+theme_override_font_sizes/font_size = 32
+text = "Back"
+
+[node name="CancelSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_i6lef")
