@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://ojumtx372esk"]
+
+[ext_resource type="PackedScene" uid="uid://cllyx5s1lqyon" path="res://scenes/entities/player.tscn" id="1_iv81d"]
+[ext_resource type="Texture2D" uid="uid://b58wrdk1inej4" path="res://icon.svg" id="2_ykvyi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykvyi"]
+size = Vector2(19, 655)
+
+[node name="TestingGrounds" type="Node2D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1163.0
+offset_bottom = 641.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -977.0
+offset_top = -600.0
+offset_right = 801.0
+offset_bottom = 884.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ykvyi")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1_iv81d")]
+position = Vector2(572, 331)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.785, 1.785)
+
+[node name="Walls" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-0.5, 317.5)
+shape = SubResource("RectangleShape2D_ykvyi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Walls"]
+position = Vector2(1151, 317.5)
+shape = SubResource("RectangleShape2D_ykvyi")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Walls"]
+position = Vector2(692, 646)
+rotation = 1.5708
+scale = Vector2(1, 2.4)
+shape = SubResource("RectangleShape2D_ykvyi")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Walls"]
+position = Vector2(692, 3)
+rotation = 1.5708
+scale = Vector2(1, 2.4)
+shape = SubResource("RectangleShape2D_ykvyi")

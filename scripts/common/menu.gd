@@ -62,6 +62,10 @@ func connect_signals() -> void:
 		get_tree().quit()
 	)
 	
+	new_button.pressed.connect(func():
+		get_tree().change_scene_to_file("res://scenes/arenas/testing_grounds.tscn")
+	)
+	
 	credits_button.pressed.connect(func():
 		last_focus_button = get_viewport().gui_get_focus_owner()
 		credits_panel.visible = true
