@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 SaveManager="*res://scripts/globals/save_manager.gd"
 Todo="*res://scripts/globals/todo.gd"
+GlobalMethods="*res://scripts/globals/global_methods.gd"
+NotificationManager="*res://scenes/notification_manager.tscn"
 
 [file_customization]
 

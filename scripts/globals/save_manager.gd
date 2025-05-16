@@ -3,10 +3,7 @@ extends Node
 const SAVE_PATH = "user://save.spell"
 const PASSWORD = "9fa!DN49D+rBS^Hdap2^Ce&!WD^uxaRSj3f#UfdFHdgQ7EgY)g)d4YbTamB$J#TY"
 
-var save_dict: Dictionary[String, Variant] = {
-	Test = 1,
-	Name = "Hello!"
-}
+var save_dict: Dictionary[String, Variant] = {}
 
 func save_game() -> void:
 	var file = FileAccess.open_encrypted_with_pass(SAVE_PATH,
