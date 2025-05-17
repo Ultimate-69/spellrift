@@ -145,7 +145,8 @@ size = Vector2(15.2985, 39.1791)
 [sub_resource type="CircleShape2D" id="CircleShape2D_mh23v"]
 radius = 83.1505
 
-[node name="AttackingDummy" type="StaticBody2D"]
+[node name="AttackingDummy" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_x2hvk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

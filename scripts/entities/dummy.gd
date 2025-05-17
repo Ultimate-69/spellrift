@@ -1,6 +1,9 @@
-extends StaticBody2D
+extends CharacterBody2D
 
 @onready var health_component: HealthComponent = $HealthComponent
+
+func _physics_process(delta: float) -> void:
+	move_and_slide()
 
 func _ready() -> void:
 	health_component.on_entity_death.connect(dummy_died)

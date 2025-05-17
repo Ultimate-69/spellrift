@@ -350,6 +350,7 @@ animations = [{
 size = Vector2(30, 81)
 
 [node name="Player" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_08t41")
 
 [node name="PlayerUI" type="CanvasLayer" parent="."]

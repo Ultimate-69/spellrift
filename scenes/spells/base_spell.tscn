@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://btt772fxcyrnk" path="res://scripts/spells/base_spell.gd" id="1_lhtpi"]
 
 [node name="BaseSpell" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_lhtpi")
