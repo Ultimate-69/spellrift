@@ -5,19 +5,6 @@ const SMOOTH_FACTOR: float = 100.0
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-var area: Area2D
-
-func _ready() -> void:
-	area = $Area2D
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("ui_accept"):
-		var areas = area.get_overlapping_areas()
-		for i in areas:
-			if i is HurtboxComponent and not i.get_parent() == self:
-				var direction_to_opponent = global_position.direction_to(i.get_parent().position)
-				i.take_damage(Attack.new(10, direction_to_opponent * 10))
-
 func _physics_process(_delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if direction:

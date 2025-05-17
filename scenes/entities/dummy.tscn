@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://devho3o5pshh1"]
+[gd_scene load_steps=17 format=3 uid="uid://devho3o5pshh1"]
 
 [ext_resource type="Texture2D" uid="uid://2d1dva31wg31" path="res://assets/sprites/entities/dummy/Training Dummy Sprite Sheet.png" id="1_acb47"]
+[ext_resource type="Script" uid="uid://vxye8he44eer" path="res://scripts/entities/dummy.gd" id="1_ah4iq"]
 [ext_resource type="PackedScene" uid="uid://dpbi6rjgw8inc" path="res://components/collision/hurtbox_component.tscn" id="2_yr1br"]
 [ext_resource type="PackedScene" uid="uid://sucih4lsh0bo" path="res://components/entity/health_component.tscn" id="3_ah4iq"]
 
@@ -102,6 +103,7 @@ animations = [{
 size = Vector2(9, 20)
 
 [node name="Dummy" type="StaticBody2D"]
+script = ExtResource("1_ah4iq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.68, 2.68)

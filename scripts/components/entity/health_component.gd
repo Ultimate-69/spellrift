@@ -13,6 +13,8 @@ var health: int
 var tween: Tween
 
 signal on_entity_death
+signal damaged
+signal regened
 
 func _ready() -> void:
 	health = max_health
@@ -27,10 +29,13 @@ func _ready() -> void:
 
 func take_damage(attack: Attack) -> void:
 	health -= attack.damage
+	damaged.emit()
+	hit_sound.play()
+	
 	if show_health:
 		tween = create_tween()
 		tween.tween_property(health_bar, "value", health, 0.5)
-	hit_sound.play()
+		
 	if hit_flash:
 		entity_sprite.modulate = Color(1.5, 0, 0)
 		
@@ -47,12 +52,14 @@ func take_damage(attack: Attack) -> void:
 		
 		tween = create_tween()
 		tween.tween_property(entity_sprite, "scale", scale - Vector2(0.1, 0.1), 0.1).set_ease(Tween.EASE_IN_OUT)
-	if health <= 0:
+		
+	if health <= 1:
 		# dead
 		on_entity_death.emit()
 		
 func regen_health(regen: int) -> void:
+	regened.emit()
+	health += regen
 	if show_health:
 		tween = create_tween()
 		tween.tween_property(health_bar, "value", health, 0.5)
-	health += regen
