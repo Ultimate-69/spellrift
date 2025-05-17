@@ -21,11 +21,9 @@ enum types {
 enum modifiers {
 	None,
 	Homing,
-	Bounce,
 	Pierce,
 	Split,
 	Delay,
-	Leech
 }
 
 @export_category("Spell Details")

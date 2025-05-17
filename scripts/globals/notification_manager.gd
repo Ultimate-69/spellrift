@@ -6,10 +6,12 @@ const END_POS = Vector2(691, 484)
 @onready var panel: Panel = $Panel
 @onready var title: Label = $Panel/Title
 @onready var body: Label = $Panel/Body
+@onready var notification_sound: AudioStreamPlayer = $NotificationSound
 
 var tween: Tween
 
 func send_notification(body_text: String, title_text: String) -> void:
+	notification_sound.play()
 	panel.position = START_POS
 	
 	tween = create_tween()

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cee5exv4etvjn"]
+[gd_scene load_steps=3 format=3 uid="uid://cee5exv4etvjn"]
 
 [ext_resource type="Script" uid="uid://d4ijjgf6g856x" path="res://scripts/globals/notification_manager.gd" id="1_rx66d"]
+[ext_resource type="AudioStream" uid="uid://b08cf2m0odxtv" path="res://assets/sfx/confirm.wav" id="2_s7wj7"]
 
 [node name="NotificationManager" type="Control"]
 layout_mode = 3
@@ -55,3 +56,6 @@ offset_top = 53.0
 offset_right = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="NotificationSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_s7wj7")
