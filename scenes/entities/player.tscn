@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cllyx5s1lqyon"]
+[gd_scene load_steps=61 format=3 uid="uid://cllyx5s1lqyon"]
 
 [ext_resource type="Script" uid="uid://bmtj8liiybag6" path="res://scripts/player/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://bx7fcew1d0l5o" path="res://assets/sprites/entities/wizard/Wizard Pack/Idle.png" id="2_08t41"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://mci5q83x4evm" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_b.svg" id="3_73kkf"]
 [ext_resource type="Texture2D" uid="uid://rwfq8smm283d" path="res://assets/sprites/entities/wizard/Wizard Pack/Death.png" id="3_dnykm"]
 [ext_resource type="Texture2D" uid="uid://2bpemvnyupe5" path="res://assets/sprites/entities/wizard/Wizard Pack/Hit.png" id="4_c5rqy"]
+[ext_resource type="Texture2D" uid="uid://dfy4p1h5iuo1y" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_e.svg" id="4_saib0"]
+[ext_resource type="Texture2D" uid="uid://c3ml441a8yhlf" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_i.svg" id="5_ogpgs"]
+[ext_resource type="Texture2D" uid="uid://c26a762k5p6r5" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_c.svg" id="6_spk56"]
 [ext_resource type="Texture2D" uid="uid://djky7scljovnj" path="res://assets/sprites/entities/wizard/Wizard Pack/Attack1.png" id="7_b6tgf"]
 [ext_resource type="PackedScene" uid="uid://dpbi6rjgw8inc" path="res://components/collision/hurtbox_component.tscn" id="8_c5rqy"]
 [ext_resource type="PackedScene" uid="uid://sucih4lsh0bo" path="res://components/entity/health_component.tscn" id="9_b6tgf"]
@@ -395,36 +398,73 @@ theme_override_fonts/font = ExtResource("2_b6tgf")
 theme_override_font_sizes/font_size = 32
 text = "Health"
 
-[node name="Spells" type="Control" parent="PlayerUI/UIContainer"]
+[node name="Controls" type="Control" parent="PlayerUI/UIContainer"]
 anchors_preset = 0
-offset_left = 16.0
-offset_top = 506.0
-offset_right = 502.0
+offset_left = 3.0
+offset_top = 541.0
+offset_right = 1149.0
 offset_bottom = 648.0
 
-[node name="Label" type="Label" parent="PlayerUI/UIContainer/Spells"]
-layout_mode = 0
-offset_left = 10.0
-offset_right = 99.0
-offset_bottom = 45.0
-theme_override_font_sizes/font_size = 32
-text = "Spells"
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 69.0
+offset_right = 984.0
+offset_bottom = 34.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.540953, 0.540953)
+theme_override_constants/separation = 20
 
-[node name="Label2" type="Label" parent="PlayerUI/UIContainer/Spells"]
-layout_mode = 0
-offset_left = 68.0
-offset_top = 75.0
-offset_right = 192.0
-offset_bottom = 120.0
-theme_override_font_sizes/font_size = 32
-text = "Fire Ball"
+[node name="Cast" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
+layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="PlayerUI/UIContainer/Spells"]
-layout_mode = 0
-offset_top = 64.0
-offset_right = 64.0
-offset_bottom = 128.0
+[node name="CastTexture" type="TextureRect" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Cast"]
+layout_mode = 2
 texture = ExtResource("3_73kkf")
+
+[node name="CastLabel" type="Label" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Cast"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Cast Spell"
+
+[node name="Choose" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="ChooseTexture" type="TextureRect" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Choose"]
+layout_mode = 2
+texture = ExtResource("4_saib0")
+
+[node name="ChooseLabel" type="Label" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Choose"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Choose Spell"
+
+[node name="Inventory" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="InventoryTexture" type="TextureRect" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Inventory"]
+layout_mode = 2
+texture = ExtResource("5_ogpgs")
+
+[node name="InventoryLabel" type="Label" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Inventory"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Open Inventory"
+
+[node name="Hide" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="HideTexture" type="TextureRect" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Hide"]
+layout_mode = 2
+texture = ExtResource("6_spk56")
+
+[node name="HideLabel" type="Label" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Hide"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Hide/Show Controls"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c5rqy")

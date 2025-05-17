@@ -3,16 +3,29 @@ class_name BaseSpell extends CharacterBody2D
 enum elements {
 	None,
 	Fire,
+	Ice,
+	Lightning,
+	Poison,
+	Arcane,
+	Void
 }
 
 enum types {
 	None,
 	Missle,
+	Beam,
+	Orbital,
+	Trap
 }
 
 enum modifiers {
 	None,
-	Homing
+	Homing,
+	Bounce,
+	Pierce,
+	Split,
+	Delay,
+	Leech
 }
 
 @export_category("Spell Details")

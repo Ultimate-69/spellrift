@@ -7,6 +7,7 @@ const SMOOTH_FACTOR: float = 100.0
 @onready var health_component: HealthComponent = $HealthComponent
 @onready var footstep_component: FootstepComponent = $FootstepComponent
 @onready var spell_audio_player: AudioStreamPlayer = $SpellAudioPlayer
+@onready var controls: Control = $PlayerUI/UIContainer/Controls
 
 var tween: Tween
 
@@ -47,6 +48,9 @@ func _process(_delta: float) -> void:
 		get_parent().add_child(instanced_spell)
 		instanced_spell.global_position = global_position
 		instanced_spell.cast(get_global_mouse_position())
+		
+	if Input.is_action_just_pressed("hide_controls"):
+		controls.visible = not controls.visible
 
 func _physics_process(_delta: float) -> void:
 	if is_knockback:

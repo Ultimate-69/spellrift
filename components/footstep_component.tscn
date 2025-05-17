@@ -5,4 +5,5 @@
 
 [node name="FootstepComponent" type="AudioStreamPlayer"]
 stream = ExtResource("1_81ddg")
+volume_db = -5.0
 script = ExtResource("2_8ktj8")
