@@ -7,7 +7,7 @@ var tween: Tween
 func _ready() -> void:
 	hitbox_component.area_entered.connect(body_entered)
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 func body_entered(area: Area2D) -> void:

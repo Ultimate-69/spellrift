@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cllyx5s1lqyon"]
+[gd_scene load_steps=56 format=3 uid="uid://cllyx5s1lqyon"]
 
 [ext_resource type="Script" uid="uid://bmtj8liiybag6" path="res://scripts/player/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://bx7fcew1d0l5o" path="res://assets/sprites/entities/wizard/Wizard Pack/Idle.png" id="2_08t41"]
@@ -32,10 +32,6 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1yk18"]
-atlas = ExtResource("2_ss7kx")
-region = Rect2(0, 0, 231, 190)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4o2o"]
 atlas = ExtResource("2_ss7kx")
@@ -200,9 +196,6 @@ region = Rect2(1617, 0, 231, 190)
 [sub_resource type="SpriteFrames" id="SpriteFrames_c5rqy"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1yk18")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b4o2o")
 }, {
@@ -434,7 +427,7 @@ texture = ExtResource("3_73kkf")
 sprite_frames = SubResource("SpriteFrames_c5rqy")
 animation = &"cast"
 autoplay = "idle"
-frame = 7
+frame = 6
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

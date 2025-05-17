@@ -18,7 +18,7 @@ func _ready() -> void:
 	health_bar.value = health_component.health
 	health_component.damaged.connect(health_changed)
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("spell_1"):
 		if selected_spell == Spells.spells["fire_ball"]:
 			Globals.change_mouse_icon(null)
