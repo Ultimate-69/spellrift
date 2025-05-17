@@ -158,7 +158,8 @@ focus_mode = 2
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Ultimate - Programmer
-ZaoSplat - SFX"
+ZaoSplat - SFX
+Elthen - Art"
 
 [node name="BackKey" type="TextureRect" parent="UIPanels/Credits"]
 layout_mode = 0

@@ -1,10 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://sucih4lsh0bo"]
+[gd_scene load_steps=6 format=3 uid="uid://sucih4lsh0bo"]
 
 [ext_resource type="Script" uid="uid://ou54tx7wug64" path="res://scripts/components/entity/health_component.gd" id="1_unufj"]
 [ext_resource type="AudioStream" uid="uid://uhmwb5jp7haq" path="res://assets/sfx/combat/hit.mp3" id="2_b572j"]
+[ext_resource type="FontFile" uid="uid://c73vy11e137o2" path="res://assets/fonts/Rubik/static/Rubik-Regular.ttf" id="3_1rvug"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws1b7"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcl1v"]
+bg_color = Color(0.698039, 1, 0, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
 
 [node name="HealthComponent" type="Node2D"]
 script = ExtResource("1_unufj")
 
 [node name="HitSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_b572j")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+visible = false
+offset_right = 44.0
+offset_bottom = 9.0
+theme_override_fonts/font = ExtResource("3_1rvug")
+theme_override_font_sizes/font_size = 16
+theme_override_styles/background = SubResource("StyleBoxFlat_ws1b7")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vcl1v")
+max_value = 500.0
+show_percentage = false
