@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ojumtx372esk"]
+[gd_scene load_steps=6 format=3 uid="uid://ojumtx372esk"]
 
 [ext_resource type="PackedScene" uid="uid://cllyx5s1lqyon" path="res://scenes/entities/player.tscn" id="1_iv81d"]
 [ext_resource type="Texture2D" uid="uid://b58wrdk1inej4" path="res://icon.svg" id="2_ykvyi"]
 [ext_resource type="PackedScene" uid="uid://devho3o5pshh1" path="res://scenes/entities/dummy.tscn" id="3_vxxun"]
+[ext_resource type="PackedScene" uid="uid://dxairy1nox40t" path="res://scenes/entities/attacking_dummy.tscn" id="4_64g0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykvyi"]
 size = Vector2(19, 655)
@@ -61,8 +62,11 @@ position = Vector2(566, 123)
 [node name="Dummy3" parent="." instance=ExtResource("3_vxxun")]
 position = Vector2(945, 123)
 
+[node name="AttackingDummy" parent="." instance=ExtResource("4_64g0v")]
+position = Vector2(89, 332)
+
 [node name="Player" parent="." instance=ExtResource("1_iv81d")]
 position = Vector2(572, 331)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(1.785, 1.785)
+zoom = Vector2(1.485, 1.485)

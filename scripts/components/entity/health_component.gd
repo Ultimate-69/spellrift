@@ -6,6 +6,7 @@ class_name HealthComponent extends Node2D
 @export_range(1, 500) var max_health: int = 100
 @export var hit_flash: bool = true
 @export var show_health: bool = false
+@export var health_offset: Vector2 = Vector2(-20, -25)
 
 @onready var hit_sound: AudioStreamPlayer = $HitSound
 @onready var health_bar: ProgressBar = $HealthBar
@@ -24,7 +25,7 @@ func _ready() -> void:
 		health_bar.value = max_health
 		health_bar.visible = true
 		health_bar.reparent(entity_sprite, false)
-		health_bar.position = entity_sprite.position + Vector2(-20, -25)
+		health_bar.position = entity_sprite.position + health_offset
 	else:
 		health_bar.visible = false
 
@@ -54,7 +55,8 @@ func take_damage(attack: Attack) -> void:
 		tween = create_tween()
 		tween.tween_property(entity_sprite, "scale", scale - Vector2(0.1, 0.1), 0.1).set_ease(Tween.EASE_IN_OUT)
 		
-	if health <= 1:
+	if health <= 0:
+		health = 0
 		# dead
 		on_entity_death.emit()
 		

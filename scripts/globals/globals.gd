@@ -2,7 +2,7 @@ extends Node
 
 const VERSION_NUM: String = "v0.0.1 DEV"
 
-var mouse_icons: Dictionary[String, Image] = { 
+var mouse_icons: Dictionary[String, Texture2D] = { 
 	"mouse_circle_x_icon" = load("res://assets/images/crosshairs/crosshair052.png"),
 	"empty" = load("res://assets/images/crosshairs/crosshair001.png"),
 	"plus" = load("res://assets/images/crosshairs/crosshair002.png"),
