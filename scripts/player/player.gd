@@ -23,7 +23,7 @@ func _ready() -> void:
 	health_component.damaged.connect(health_changed)
 	
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("spell_1"):
+	if Input.is_action_just_pressed("spell_select"):
 		if selected_spell != Spells.spells["none"]:
 			Globals.change_mouse_icon(null)
 			selected_spell = Spells.spells["none"]

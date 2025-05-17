@@ -1,11 +1,13 @@
 extends CharacterBody2D
 
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
+@onready var health_component: HealthComponent = $HealthComponent
 
 func _ready() -> void:
+	health_component.on_entity_death.connect(revive)
 	attack()
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 func attack() -> void:
@@ -19,3 +21,6 @@ func attack() -> void:
 					area.take_damage(Attack.new(5, direction_to_opponent * 50))
 	await Globals.wait(0.7)
 	attack()
+	
+func revive() -> void:
+	health_component.regen_health(health_component.max_health)

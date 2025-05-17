@@ -1,10 +1,11 @@
-[gd_scene load_steps=61 format=3 uid="uid://cllyx5s1lqyon"]
+[gd_scene load_steps=62 format=3 uid="uid://cllyx5s1lqyon"]
 
 [ext_resource type="Script" uid="uid://bmtj8liiybag6" path="res://scripts/player/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://bx7fcew1d0l5o" path="res://assets/sprites/entities/wizard/Wizard Pack/Idle.png" id="2_08t41"]
 [ext_resource type="FontFile" uid="uid://c73vy11e137o2" path="res://assets/fonts/Rubik/static/Rubik-Regular.ttf" id="2_b6tgf"]
 [ext_resource type="Texture2D" uid="uid://50nt7o2gnwi3" path="res://assets/sprites/entities/wizard/Wizard Pack/Attack2.png" id="2_ss7kx"]
 [ext_resource type="Texture2D" uid="uid://bbjx0a62q1ayf" path="res://assets/sprites/entities/wizard/Wizard Pack/Run.png" id="3_1ie0h"]
+[ext_resource type="Texture2D" uid="uid://b3nsldritnl2u" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/mouse_left.svg" id="3_1yk18"]
 [ext_resource type="Texture2D" uid="uid://mci5q83x4evm" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_b.svg" id="3_73kkf"]
 [ext_resource type="Texture2D" uid="uid://rwfq8smm283d" path="res://assets/sprites/entities/wizard/Wizard Pack/Death.png" id="3_dnykm"]
 [ext_resource type="Texture2D" uid="uid://2bpemvnyupe5" path="res://assets/sprites/entities/wizard/Wizard Pack/Hit.png" id="4_c5rqy"]
@@ -423,12 +424,24 @@ layout_mode = 2
 
 [node name="CastTexture" type="TextureRect" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Cast"]
 layout_mode = 2
-texture = ExtResource("3_73kkf")
+texture = ExtResource("3_1yk18")
 
 [node name="CastLabel" type="Label" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Cast"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Cast Spell"
+
+[node name="Prepare" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
+layout_mode = 2
+
+[node name="PrepareTexture" type="TextureRect" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Prepare"]
+layout_mode = 2
+texture = ExtResource("3_73kkf")
+
+[node name="PrepareLabel" type="Label" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Prepare"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Prepare Spell"
 
 [node name="Choose" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
 layout_mode = 2
