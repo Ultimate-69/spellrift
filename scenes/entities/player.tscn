@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cllyx5s1lqyon"]
+[gd_scene load_steps=58 format=3 uid="uid://cllyx5s1lqyon"]
 
 [ext_resource type="Script" uid="uid://bmtj8liiybag6" path="res://scripts/player/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://bx7fcew1d0l5o" path="res://assets/sprites/entities/wizard/Wizard Pack/Idle.png" id="2_08t41"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://djky7scljovnj" path="res://assets/sprites/entities/wizard/Wizard Pack/Attack1.png" id="7_b6tgf"]
 [ext_resource type="PackedScene" uid="uid://dpbi6rjgw8inc" path="res://components/collision/hurtbox_component.tscn" id="8_c5rqy"]
 [ext_resource type="PackedScene" uid="uid://sucih4lsh0bo" path="res://components/entity/health_component.tscn" id="9_b6tgf"]
+[ext_resource type="PackedScene" uid="uid://s7gveb0334oy" path="res://components/footstep_component.tscn" id="12_n5sgd"]
+[ext_resource type="AudioStream" uid="uid://cwow88p3hhht7" path="res://assets/sfx/movement/st3-footstep-sfx-323056.mp3" id="13_5ki56"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73kkf"]
 bg_color = Color(0, 0, 0, 1)
@@ -445,3 +447,9 @@ shape = SubResource("RectangleShape2D_08t41")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("entity_sprite") instance=ExtResource("9_b6tgf")]
 entity_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="FootstepComponent" parent="." instance=ExtResource("12_n5sgd")]
+stream = ExtResource("13_5ki56")
+
+[node name="SpellAudioPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0

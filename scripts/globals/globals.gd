@@ -1,6 +1,6 @@
 extends Node
 
-const VERSION_NUM: String = "v0.0.1 DEV"
+const VERSION_NUM: String = "v0.0.4 DEV"
 
 var mouse_icons: Dictionary[String, Texture2D] = { 
 	"mouse_circle_x_icon" = load("res://assets/images/crosshairs/crosshair052.png"),

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://s7gveb0334oy"]
+
+[ext_resource type="AudioStream" uid="uid://bstb33nk6orej" path="res://assets/sfx/movement/footstep.ogg" id="1_81ddg"]
+[ext_resource type="Script" uid="uid://cfv0s2000y4nb" path="res://scripts/components/footstep_component.gd" id="2_8ktj8"]
+
+[node name="FootstepComponent" type="AudioStreamPlayer"]
+stream = ExtResource("1_81ddg")
+script = ExtResource("2_8ktj8")

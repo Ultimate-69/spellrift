@@ -168,6 +168,7 @@ shape = SubResource("RectangleShape2D_tpd06")
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("entity_sprite") instance=ExtResource("3_oaj73")]
 scale = Vector2(1.78704, 1.78704)
 entity_sprite = NodePath("../AnimatedSprite2D")
+max_health = 500
 show_health = true
 health_offset = Vector2(-20, -35)
 

@@ -19,6 +19,7 @@ enum modifiers {
 @export var spell_element: elements
 @export var spell_type: types
 @export var spell_modifier: modifiers
+@export var spell_sfx: AudioStream
 @export_category("Spell Stats")
 @export var spell_base_damage: float
 @export var spell_base_speed: float
