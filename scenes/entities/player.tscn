@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cllyx5s1lqyon"]
+[gd_scene load_steps=55 format=3 uid="uid://cllyx5s1lqyon"]
 
 [ext_resource type="Script" uid="uid://bmtj8liiybag6" path="res://scripts/player/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://bx7fcew1d0l5o" path="res://assets/sprites/entities/wizard/Wizard Pack/Idle.png" id="2_08t41"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://djky7scljovnj" path="res://assets/sprites/entities/wizard/Wizard Pack/Attack1.png" id="7_b6tgf"]
 [ext_resource type="PackedScene" uid="uid://dpbi6rjgw8inc" path="res://components/collision/hurtbox_component.tscn" id="8_c5rqy"]
 [ext_resource type="PackedScene" uid="uid://sucih4lsh0bo" path="res://components/entity/health_component.tscn" id="9_b6tgf"]
+[ext_resource type="PackedScene" uid="uid://b827chmb2wfo6" path="res://components/collision/hitbox_component.tscn" id="10_b6tgf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1yk18"]
 atlas = ExtResource("2_ss7kx")
@@ -358,7 +359,7 @@ shape = SubResource("RectangleShape2D_08t41")
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("entity_sprite") instance=ExtResource("9_b6tgf")]
 entity_sprite = NodePath("../AnimatedSprite2D")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HitboxComponent" parent="." instance=ExtResource("10_b6tgf")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_c5rqy")
