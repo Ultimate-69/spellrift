@@ -39,14 +39,14 @@ func take_damage(attack: Attack) -> void:
 		entity_sprite.modulate = Color(2, 2, 2)
 		
 		tween = create_tween()
-		tween.tween_property(entity_sprite, "scale", Vector2(1.1, 1.1), 0.1).set_trans(tween.TRANS_SPRING)
+		tween.tween_property(entity_sprite, "scale", scale + Vector2(0.1, 0.1), 0.1).set_trans(tween.TRANS_SPRING)
 		
 		await Globals.wait(0.1)
 		
 		entity_sprite.modulate = Color(1, 1, 1)
 		
 		tween = create_tween()
-		tween.tween_property(entity_sprite, "scale", Vector2(1.0, 1.0), 0.1).set_ease(Tween.EASE_IN_OUT)
+		tween.tween_property(entity_sprite, "scale", scale - Vector2(0.1, 0.1), 0.1).set_ease(Tween.EASE_IN_OUT)
 	if health <= 0:
 		# dead
 		on_entity_death.emit()

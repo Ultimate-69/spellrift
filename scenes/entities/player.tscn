@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cllyx5s1lqyon"]
+[gd_scene load_steps=54 format=3 uid="uid://cllyx5s1lqyon"]
 
 [ext_resource type="Script" uid="uid://bmtj8liiybag6" path="res://scripts/player/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://bx7fcew1d0l5o" path="res://assets/sprites/entities/wizard/Wizard Pack/Idle.png" id="2_08t41"]
@@ -333,6 +333,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08t41"]
 size = Vector2(30, 81)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c5rqy"]
+radius = 82.3893
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_08t41")
 
@@ -354,3 +357,8 @@ shape = SubResource("RectangleShape2D_08t41")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("entity_sprite") instance=ExtResource("9_b6tgf")]
 entity_sprite = NodePath("../AnimatedSprite2D")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_c5rqy")

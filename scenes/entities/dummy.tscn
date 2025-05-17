@@ -109,9 +109,10 @@ sprite_frames = SubResource("SpriteFrames_8lpvi")
 animation = &"hit_normal"
 autoplay = "idle"
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_yr1br")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "knockback_body") instance=ExtResource("2_yr1br")]
 scale = Vector2(2.68, 2.68)
 health_component = NodePath("../HealthComponent")
+knockback_body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 position = Vector2(0.5, 0)

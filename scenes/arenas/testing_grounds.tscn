@@ -30,12 +30,6 @@ grow_vertical = 2
 texture = ExtResource("2_ykvyi")
 stretch_mode = 1
 
-[node name="Player" parent="." instance=ExtResource("1_iv81d")]
-position = Vector2(572, 331)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(1.785, 1.785)
-
 [node name="Walls" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls"]
@@ -66,3 +60,9 @@ position = Vector2(566, 123)
 
 [node name="Dummy3" parent="." instance=ExtResource("3_vxxun")]
 position = Vector2(945, 123)
+
+[node name="Player" parent="." instance=ExtResource("1_iv81d")]
+position = Vector2(572, 331)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.785, 1.785)
