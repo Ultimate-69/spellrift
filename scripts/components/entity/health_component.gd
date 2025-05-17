@@ -1,3 +1,4 @@
+@icon("res://assets/images/components/hearts.svg")
 class_name HealthComponent extends Node2D
 
 @export var entity_sprite: Node2D # animated or normal

@@ -156,10 +156,12 @@ focus_mode = 2
 
 [node name="Label" type="Label" parent="UIPanels/Credits/ScrollContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2_4ytvr")
 theme_override_font_sizes/font_size = 32
 text = "Ultimate - Programmer
 ZaoSplat - SFX
-Elthen - Art"
+Elthen - Art
+Kenney - Art"
 
 [node name="BackKey" type="TextureRect" parent="UIPanels/Credits"]
 layout_mode = 0
