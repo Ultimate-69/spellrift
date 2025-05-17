@@ -20,7 +20,7 @@ func body_entered(area: Area2D) -> void:
 			await animated_sprite_2d.animation_finished
 			queue_free()
 
-func move_to_target(target: Vector2) -> void:
+func cast(target: Vector2) -> void:
 	animated_sprite_2d.play("shot")
 	look_at(target)
 	velocity = global_position.direction_to(target) * (spell_base_speed * 10)

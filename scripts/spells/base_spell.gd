@@ -22,3 +22,6 @@ enum modifiers {
 @export_category("Spell Stats")
 @export var spell_base_damage: float
 @export var spell_base_speed: float
+
+func cast(target: Vector2) -> void:
+	pass

@@ -20,7 +20,7 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("spell_1"):
-		if selected_spell == Spells.spells["fire_ball"]:
+		if selected_spell != Spells.spells["none"]:
 			Globals.change_mouse_icon(null)
 			selected_spell = Spells.spells["none"]
 		else:
@@ -28,19 +28,18 @@ func _process(_delta: float) -> void:
 			Globals.change_mouse_icon(Globals.mouse_icons["mouse_circle_x_icon"])
 			
 	if Input.is_action_just_pressed("cast"):
-		if selected_spell == Spells.spells["fire_ball"]:
-			var fireball = preload("res://scenes/spells/fireball.tscn")
-			var instanced_fireball: Fireball = fireball.instantiate()
-			if get_global_mouse_position().x < global_position.x:
-				animated_sprite_2d.flip_h = true
-			elif get_global_mouse_position().x > global_position.x:
-				animated_sprite_2d.flip_h = false
-			animated_sprite_2d.play("cast")
-			
-			get_parent().add_child(instanced_fireball)
-			instanced_fireball.global_position = global_position
-			instanced_fireball.look_at(get_global_mouse_position())
-			instanced_fireball.move_to_target(get_global_mouse_position())
+		if selected_spell == Spells.spells["none"]: return
+		var spell_scene: PackedScene = load(Spells.spells["fire_ball"][1])
+		var instanced_spell: BaseSpell = spell_scene.instantiate()
+		if get_global_mouse_position().x < global_position.x:
+			animated_sprite_2d.flip_h = true
+		elif get_global_mouse_position().x > global_position.x:
+			animated_sprite_2d.flip_h = false
+		animated_sprite_2d.play("cast")
+		
+		get_parent().add_child(instanced_spell)
+		instanced_spell.global_position = global_position
+		instanced_spell.cast(get_global_mouse_position())
 
 func _physics_process(_delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
