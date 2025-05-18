@@ -21,10 +21,10 @@ SaveManager="*res://scripts/globals/save_manager.gd"
 Todo="*res://scripts/globals/todo.gd"
 Globals="*res://scripts/globals/globals.gd"
 NotificationManager="*res://scenes/notification_manager.tscn"
+Enums="*res://scripts/globals/enums.gd"
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [file_customization]

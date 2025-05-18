@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://cllyx5s1lqyon"]
+[gd_scene load_steps=65 format=3 uid="uid://cllyx5s1lqyon"]
 
 [ext_resource type="Script" uid="uid://bmtj8liiybag6" path="res://scripts/player/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://bx7fcew1d0l5o" path="res://assets/sprites/entities/wizard/Wizard Pack/Idle.png" id="2_08t41"]
@@ -13,8 +13,10 @@
 [ext_resource type="Texture2D" uid="uid://c3ml441a8yhlf" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_i.svg" id="5_ogpgs"]
 [ext_resource type="Texture2D" uid="uid://c26a762k5p6r5" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_c.svg" id="6_spk56"]
 [ext_resource type="Texture2D" uid="uid://djky7scljovnj" path="res://assets/sprites/entities/wizard/Wizard Pack/Attack1.png" id="7_b6tgf"]
+[ext_resource type="Texture2D" uid="uid://b58wrdk1inej4" path="res://icon.svg" id="8_b4o2o"]
 [ext_resource type="PackedScene" uid="uid://dpbi6rjgw8inc" path="res://components/collision/hurtbox_component.tscn" id="8_c5rqy"]
 [ext_resource type="PackedScene" uid="uid://sucih4lsh0bo" path="res://components/entity/health_component.tscn" id="9_b6tgf"]
+[ext_resource type="Texture2D" uid="uid://b27sthutnqwoq" path="res://assets/images/navigation_e.svg" id="9_yr3on"]
 [ext_resource type="PackedScene" uid="uid://s7gveb0334oy" path="res://components/footstep_component.tscn" id="12_n5sgd"]
 [ext_resource type="AudioStream" uid="uid://cwow88p3hhht7" path="res://assets/sfx/movement/st3-footstep-sfx-323056.mp3" id="13_5ki56"]
 
@@ -38,6 +40,13 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yr3on"]
+bg_color = Color(0, 0, 0, 0.436)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4o2o"]
 atlas = ExtResource("2_ss7kx")
@@ -349,7 +358,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"staff_cast",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_08t41"]
@@ -420,6 +429,7 @@ scale = Vector2(0.540953, 0.540953)
 theme_override_constants/separation = 20
 
 [node name="Cast" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="CastTexture" type="TextureRect" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Cast"]
@@ -453,7 +463,7 @@ texture = ExtResource("4_saib0")
 [node name="ChooseLabel" type="Label" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Choose"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
-text = "Choose Spell"
+text = "Switch Spell"
 
 [node name="Inventory" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
 layout_mode = 2
@@ -479,11 +489,164 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Hide/Show Controls"
 
+[node name="Spells" type="Control" parent="PlayerUI/UIContainer"]
+anchors_preset = 0
+offset_left = 887.0
+offset_top = 16.0
+offset_right = 1153.0
+offset_bottom = 337.0
+
+[node name="TabTitle" type="Label" parent="PlayerUI/UIContainer/Spells"]
+layout_mode = 0
+offset_right = 268.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("2_b6tgf")
+theme_override_font_sizes/font_size = 24
+text = "Spells"
+horizontal_alignment = 1
+
+[node name="Spell1" type="Control" parent="PlayerUI/UIContainer/Spells"]
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 40.0
+offset_right = 263.0
+offset_bottom = 118.0
+
+[node name="SpellIconHolder" type="Panel" parent="PlayerUI/UIContainer/Spells/Spell1"]
+layout_mode = 0
+offset_right = 82.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yr3on")
+
+[node name="Icon" type="TextureRect" parent="PlayerUI/UIContainer/Spells/Spell1/SpellIconHolder"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 73.0
+offset_bottom = 69.0
+texture = ExtResource("8_b4o2o")
+expand_mode = 1
+
+[node name="Cooldown" type="Label" parent="PlayerUI/UIContainer/Spells/Spell1/SpellIconHolder/Icon"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 56.0
+offset_right = 102.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("2_b6tgf")
+theme_override_font_sizes/font_size = 24
+text = "0s"
+
+[node name="Name" type="Label" parent="PlayerUI/UIContainer/Spells/Spell1"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 24.0
+offset_right = 222.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("2_b6tgf")
+theme_override_font_sizes/font_size = 24
+text = "SpellName"
+
+[node name="Spell2" type="Control" parent="PlayerUI/UIContainer/Spells"]
+visible = false
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 146.0
+offset_right = 263.0
+offset_bottom = 224.0
+
+[node name="SpellIconHolder" type="Panel" parent="PlayerUI/UIContainer/Spells/Spell2"]
+layout_mode = 0
+offset_right = 82.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yr3on")
+
+[node name="Icon" type="TextureRect" parent="PlayerUI/UIContainer/Spells/Spell2/SpellIconHolder"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 73.0
+offset_bottom = 69.0
+texture = ExtResource("8_b4o2o")
+expand_mode = 1
+
+[node name="Cooldown" type="Label" parent="PlayerUI/UIContainer/Spells/Spell2/SpellIconHolder/Icon"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 56.0
+offset_right = 102.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("2_b6tgf")
+theme_override_font_sizes/font_size = 24
+text = "0s"
+
+[node name="Name" type="Label" parent="PlayerUI/UIContainer/Spells/Spell2"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 24.0
+offset_right = 222.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("2_b6tgf")
+theme_override_font_sizes/font_size = 24
+text = "SpellName"
+
+[node name="Spell3" type="Control" parent="PlayerUI/UIContainer/Spells"]
+visible = false
+anchors_preset = 0
+offset_left = 12.0
+offset_top = 251.0
+offset_right = 263.0
+offset_bottom = 329.0
+
+[node name="SpellIconHolder" type="Panel" parent="PlayerUI/UIContainer/Spells/Spell3"]
+layout_mode = 0
+offset_right = 82.0
+offset_bottom = 78.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_yr3on")
+
+[node name="Icon" type="TextureRect" parent="PlayerUI/UIContainer/Spells/Spell3/SpellIconHolder"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 73.0
+offset_bottom = 69.0
+texture = ExtResource("8_b4o2o")
+expand_mode = 1
+
+[node name="Cooldown" type="Label" parent="PlayerUI/UIContainer/Spells/Spell3/SpellIconHolder/Icon"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 56.0
+offset_right = 102.0
+offset_bottom = 85.0
+theme_override_fonts/font = ExtResource("2_b6tgf")
+theme_override_font_sizes/font_size = 24
+text = "0s"
+
+[node name="Name" type="Label" parent="PlayerUI/UIContainer/Spells/Spell3"]
+layout_mode = 0
+offset_left = 103.0
+offset_top = 24.0
+offset_right = 222.0
+offset_bottom = 53.0
+theme_override_fonts/font = ExtResource("2_b6tgf")
+theme_override_font_sizes/font_size = 24
+text = "SpellName"
+
+[node name="Selected" type="TextureRect" parent="PlayerUI/UIContainer/Spells"]
+layout_mode = 0
+offset_left = -36.0
+offset_top = 61.0
+offset_right = 4.0
+offset_bottom = 101.0
+texture = ExtResource("9_yr3on")
+expand_mode = 1
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c5rqy")
-animation = &"cast"
+animation = &"staff_cast"
 autoplay = "idle"
-frame = 6
+frame = 7
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -503,6 +666,3 @@ entity_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="FootstepComponent" parent="." instance=ExtResource("12_n5sgd")]
 stream = ExtResource("13_5ki56")
-
-[node name="SpellAudioPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = -5.0

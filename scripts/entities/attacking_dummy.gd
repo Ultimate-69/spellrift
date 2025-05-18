@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 func _ready() -> void:
 	health_component.on_entity_death.connect(revive)
@@ -11,7 +12,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 func attack() -> void:
-	$AnimatedSprite2D.play("attack")
+	animated_sprite_2d.play("attack")
 	var result = hitbox_component.attack()
 	if result:
 		for area in result:
