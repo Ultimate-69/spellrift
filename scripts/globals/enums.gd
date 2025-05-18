@@ -11,7 +11,6 @@ enum elements {
 enum types {
 	None,
 	Missle,
-	Beam,
 	Orbital,
 	Trap
 }

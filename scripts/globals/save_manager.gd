@@ -16,9 +16,8 @@ var save_dict: Dictionary = {
 	"is_in_run" = false,
 	"shards" = 0, # per-run currency
 	"current_floor" = 1,
-	"current_spells" = [["none", "none", "none"]], 
-	# each array entry above is a spell, and
-	# each spell is divided into: element | shape | modifier
+	"current_spells" = [Spells.spells["none"]], 
+	# each array entry above is a spell
 	"current_character" = "apprentice", # default character
 	"inventory" = [],
 	"upgrades" = [],
