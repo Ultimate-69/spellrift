@@ -9,6 +9,7 @@ func take_damage(attack: Attack) -> void:
 	if knockback_body:
 		if knockback_body is Player:
 			knockback_body.is_knockback = true
+		if attack.knockback_force == Vector2.ZERO: return
 		knockback_body.velocity = attack.knockback_force * 10
 		await Globals.wait(0.1)
 		if knockback_body is Player:
