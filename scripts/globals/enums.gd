@@ -5,7 +5,6 @@ enum elements {
 	Fire,
 	Ice,
 	Lightning,
-	Poison,
 }
 
 enum types {

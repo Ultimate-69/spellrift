@@ -66,9 +66,31 @@ func connect_signals() -> void:
 		get_tree().change_scene_to_file("res://scenes/arenas/testing_grounds.tscn")
 	)
 	
+	settings_button.pressed.connect(func():
+		last_focus_button = get_viewport().gui_get_focus_owner()
+		$UIPanels/Settings.visible = true
+		$UIPanels/Settings/VolumeSlider.grab_focus()
+		ui_navigator.visible = false
+	)
+	
 	credits_button.pressed.connect(func():
 		last_focus_button = get_viewport().gui_get_focus_owner()
 		credits_panel.visible = true
 		$UIPanels/Credits/ScrollContainer.grab_focus()
 		ui_navigator.visible = false
 	)
+
+
+func _on_volume_slider_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"),
+		 $UIPanels/Settings/VolumeSlider.value - 70)
+
+
+func _on_window_options_item_selected(index: int) -> void:
+	if index == 0:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+	elif index == 1:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	elif index == 2:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
