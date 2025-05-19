@@ -21,6 +21,11 @@ func body_entered(area: Area2D) -> void:
 			var direction_to_opponent = global_position.direction_to(area.get_parent().global_position)
 			@warning_ignore("narrowing_conversion")
 			area.take_damage(Attack.new(self.spell_base_damage, direction_to_opponent * 20))
+			
+			# fire effect, continous damage
+			var dps: float = spell_dps
+			area.effect_component.apply_effect(dps, spell_duration)
+			
 			velocity = Vector2(0, 0)
 			animated_sprite_2d.play("explode")
 			spell_hit_audio_player.play()

@@ -21,3 +21,6 @@ func change_mouse_icon(mouse_icon) -> void:
 # waits for the seconds provided
 func wait(time: float) -> void:
 	await get_tree().create_timer(time).timeout
+	
+func round_place(num,places):
+	return (round(num*pow(10,places))/pow(10,places))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dxairy1nox40t"]
+[gd_scene load_steps=28 format=3 uid="uid://dxairy1nox40t"]
 
 [ext_resource type="Texture2D" uid="uid://ddaxs55art6yh" path="res://assets/sprites/entities/dummy_attack/Sprite/Attack1.png" id="1_0ypnv"]
 [ext_resource type="Texture2D" uid="uid://dvhcx0jcfj06y" path="res://assets/sprites/entities/dummy_attack/Sprite/Idle.png" id="1_kx5s1"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dpbi6rjgw8inc" path="res://components/collision/hurtbox_component.tscn" id="2_0ypnv"]
 [ext_resource type="PackedScene" uid="uid://sucih4lsh0bo" path="res://components/entity/health_component.tscn" id="3_oaj73"]
 [ext_resource type="PackedScene" uid="uid://b827chmb2wfo6" path="res://components/collision/hitbox_component.tscn" id="6_x2hvk"]
+[ext_resource type="PackedScene" uid="uid://ytyx07lsfrbs" path="res://components/effect_component.tscn" id="7_mh23v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oaj73"]
 atlas = ExtResource("1_0ypnv")
@@ -156,9 +157,10 @@ animation = &"attack"
 frame = 1
 frame_progress = 0.455401
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "knockback_body") instance=ExtResource("2_0ypnv")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "effect_component", "knockback_body") instance=ExtResource("2_0ypnv")]
 scale = Vector2(1.78704, 1.78704)
 health_component = NodePath("../HealthComponent")
+effect_component = NodePath("../EffectComponent")
 knockback_body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -182,3 +184,6 @@ shape = SubResource("RectangleShape2D_tpd06")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(8, 0)
 shape = SubResource("CircleShape2D_mh23v")
+
+[node name="EffectComponent" parent="." node_paths=PackedStringArray("hurtbox_component") instance=ExtResource("7_mh23v")]
+hurtbox_component = NodePath("../HurtboxComponent")

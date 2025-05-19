@@ -206,7 +206,9 @@ spell_element = 1
 spell_type = 1
 spell_base_damage = 15.0
 spell_base_speed = 50.0
-spell_cooldown = 1.0
+spell_cooldown = 6.0
+spell_dps = 5.0
+spell_duration = 4.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708

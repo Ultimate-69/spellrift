@@ -158,7 +158,7 @@ func spell_cooldown(spell_index: int, cooldown_time: float) -> void:
 	while cooldowns[str(spell_index)]["cooldown_time_passed"] < cooldown_time:
 		await Globals.wait(0.1)
 		cooldowns[str(spell_index)]["cooldown_time_passed"] += 0.1
-		node.text = str(abs(cooldown_time - cooldowns[str(spell_index)]["cooldown_time_passed"])) + "s"
+		node.text = str(abs(Globals.round_place(cooldown_time - cooldowns[str(spell_index)]["cooldown_time_passed"], 2))) + "s"
 	
 	icon.modulate = Color(1, 1, 1, 1)
 	

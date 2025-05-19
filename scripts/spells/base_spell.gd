@@ -8,6 +8,9 @@ class_name BaseSpell extends CharacterBody2D
 @export var spell_base_damage: float
 @export var spell_base_speed: float
 @export var spell_cooldown: float
+@export_category("Spell Effects")
+@export var spell_dps: float
+@export var spell_duration: float
 
 @warning_ignore("unused_parameter")
 func cast(target: Vector2) -> void:

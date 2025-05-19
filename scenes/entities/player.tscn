@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://cllyx5s1lqyon"]
+[gd_scene load_steps=66 format=3 uid="uid://cllyx5s1lqyon"]
 
 [ext_resource type="Script" uid="uid://bmtj8liiybag6" path="res://scripts/player/player.gd" id="1_08t41"]
 [ext_resource type="Texture2D" uid="uid://bx7fcew1d0l5o" path="res://assets/sprites/entities/wizard/Wizard Pack/Idle.png" id="2_08t41"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://b27sthutnqwoq" path="res://assets/images/navigation_e.svg" id="9_yr3on"]
 [ext_resource type="PackedScene" uid="uid://s7gveb0334oy" path="res://components/footstep_component.tscn" id="12_n5sgd"]
 [ext_resource type="AudioStream" uid="uid://cwow88p3hhht7" path="res://assets/sfx/movement/st3-footstep-sfx-323056.mp3" id="13_5ki56"]
+[ext_resource type="PackedScene" uid="uid://ytyx07lsfrbs" path="res://components/effect_component.tscn" id="20_2ngu4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_73kkf"]
 bg_color = Color(0, 0, 0, 1)
@@ -653,8 +654,9 @@ frame_progress = 1.0
 position = Vector2(-9, 6.5)
 shape = SubResource("RectangleShape2D_08t41")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "knockback_body") instance=ExtResource("8_c5rqy")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "effect_component", "knockback_body") instance=ExtResource("8_c5rqy")]
 health_component = NodePath("../HealthComponent")
+effect_component = NodePath("../EffectComponent")
 knockback_body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -666,3 +668,6 @@ entity_sprite = NodePath("../AnimatedSprite2D")
 
 [node name="FootstepComponent" parent="." instance=ExtResource("12_n5sgd")]
 stream = ExtResource("13_5ki56")
+
+[node name="EffectComponent" parent="." node_paths=PackedStringArray("hurtbox_component") instance=ExtResource("20_2ngu4")]
+hurtbox_component = NodePath("../HurtboxComponent")

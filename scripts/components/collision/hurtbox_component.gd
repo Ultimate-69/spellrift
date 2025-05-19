@@ -1,6 +1,7 @@
 class_name HurtboxComponent extends Area2D
 
 @export var health_component: HealthComponent
+@export var effect_component: EffectComponent
 @export var knockback_body: CharacterBody2D
 
 func take_damage(attack: Attack) -> void:

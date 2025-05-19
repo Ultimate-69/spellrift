@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://devho3o5pshh1"]
+[gd_scene load_steps=18 format=3 uid="uid://devho3o5pshh1"]
 
 [ext_resource type="Texture2D" uid="uid://2d1dva31wg31" path="res://assets/sprites/entities/dummy/Training Dummy Sprite Sheet.png" id="1_acb47"]
 [ext_resource type="Script" uid="uid://vxye8he44eer" path="res://scripts/entities/dummy.gd" id="1_ah4iq"]
 [ext_resource type="PackedScene" uid="uid://dpbi6rjgw8inc" path="res://components/collision/hurtbox_component.tscn" id="2_yr1br"]
 [ext_resource type="PackedScene" uid="uid://sucih4lsh0bo" path="res://components/entity/health_component.tscn" id="3_ah4iq"]
+[ext_resource type="PackedScene" uid="uid://ytyx07lsfrbs" path="res://components/effect_component.tscn" id="5_tpd06"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ab73t"]
 atlas = ExtResource("1_acb47")
@@ -112,9 +113,10 @@ sprite_frames = SubResource("SpriteFrames_8lpvi")
 animation = &"hit_normal"
 autoplay = "idle"
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "knockback_body") instance=ExtResource("2_yr1br")]
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component", "effect_component", "knockback_body") instance=ExtResource("2_yr1br")]
 scale = Vector2(2.68, 2.68)
 health_component = NodePath("../HealthComponent")
+effect_component = NodePath("../EffectComponent")
 knockback_body = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -130,3 +132,6 @@ show_health = true
 position = Vector2(0.5, 0)
 scale = Vector2(2.68, 2.68)
 shape = SubResource("RectangleShape2D_tpd06")
+
+[node name="EffectComponent" parent="." node_paths=PackedStringArray("hurtbox_component") instance=ExtResource("5_tpd06")]
+hurtbox_component = NodePath("../HurtboxComponent")
