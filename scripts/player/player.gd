@@ -82,7 +82,6 @@ func _process(_delta: float) -> void:
 			cursor.position = spell_1.position - cursor_offset
 			
 		selected_spell = Spells.spells[spells[str(cursor_pos)]["name"]]
-		print(selected_spell)
 
 	if Input.is_action_just_pressed("cast"):
 		if selected_spell == Spells.spells["none"]: return
