@@ -55,7 +55,7 @@ func _process(_delta: float) -> void:
 	# prepare spell, B
 	if Input.is_action_just_pressed("spell_select"):
 		if selected_spell != Spells.spells["none"]:
-			Globals.change_mouse_icon(null)
+			Globals.change_mouse_icon(null) 
 			selected_spell = Spells.spells["none"]
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Cast.visible = false
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Prepare/PrepareLabel.text = "Prepare Spell"
@@ -162,6 +162,7 @@ func spell_cooldown(spell_index: int, cooldown_time: float) -> void:
 	spells[str(spell_index)]["cooldown"] = true
 	var path: String = "PlayerUI/UIContainer/Spells/Spell" + str(spell_index) + "/SpellIconHolder/Icon/Cooldown"
 	var node: Label = get_node(path)
+	node.visible = true
 	node.text = str(cooldown_time) + "s"
 	
 	var icon_path: String = "PlayerUI/UIContainer/Spells/Spell" + str(spell_index) + "/SpellIconHolder/Icon"
@@ -179,6 +180,7 @@ func spell_cooldown(spell_index: int, cooldown_time: float) -> void:
 	spells[str(spell_index)]["cooldown"] = false
 	spells[str(spell_index)]["cooldown_time_passed"] = 0
 	node.text = "0s"
+	node.visible = false
 
 
 	

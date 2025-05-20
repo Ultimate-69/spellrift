@@ -529,6 +529,7 @@ texture = ExtResource("8_b4o2o")
 expand_mode = 1
 
 [node name="Cooldown" type="Label" parent="PlayerUI/UIContainer/Spells/Spell1/SpellIconHolder/Icon"]
+visible = false
 layout_mode = 0
 offset_left = 62.0
 offset_top = 56.0
@@ -571,6 +572,7 @@ texture = ExtResource("8_b4o2o")
 expand_mode = 1
 
 [node name="Cooldown" type="Label" parent="PlayerUI/UIContainer/Spells/Spell2/SpellIconHolder/Icon"]
+visible = false
 layout_mode = 0
 offset_left = 62.0
 offset_top = 56.0
@@ -614,6 +616,7 @@ texture = ExtResource("8_b4o2o")
 expand_mode = 1
 
 [node name="Cooldown" type="Label" parent="PlayerUI/UIContainer/Spells/Spell3/SpellIconHolder/Icon"]
+visible = false
 layout_mode = 0
 offset_left = 62.0
 offset_top = 56.0
