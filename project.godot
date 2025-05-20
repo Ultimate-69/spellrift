@@ -22,6 +22,7 @@ Todo="*res://scripts/globals/todo.gd"
 Globals="*res://scripts/globals/globals.gd"
 NotificationManager="*res://scenes/notification_manager.tscn"
 Enums="*res://scripts/globals/enums.gd"
+DialogueManager="*res://scenes/dialogue_manager.tscn"
 
 [display]
 

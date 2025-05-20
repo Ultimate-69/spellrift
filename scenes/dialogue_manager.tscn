@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6tg5tmclr7rm"]
+
+[ext_resource type="Script" uid="uid://bborbpbnmgq48" path="res://scripts/globals/dialogue_manager.gd" id="1_jbixp"]
+[ext_resource type="Texture2D" uid="uid://b58wrdk1inej4" path="res://icon.svg" id="2_516v5"]
+[ext_resource type="FontFile" uid="uid://c73vy11e137o2" path="res://assets/fonts/Rubik/static/Rubik-Regular.ttf" id="3_smvbx"]
+[ext_resource type="AudioStream" uid="uid://dw1xbm742q83v" path="res://assets/sfx/click1.wav" id="4_61474"]
+
+[node name="DialogueManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jbixp")
+
+[node name="DialoguePanel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -423.0
+offset_top = -261.0
+offset_right = 423.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Icon" type="TextureRect" parent="DialoguePanel"]
+layout_mode = 0
+offset_right = 216.0
+offset_bottom = 216.0
+texture = ExtResource("2_516v5")
+expand_mode = 1
+
+[node name="Speaker" type="Label" parent="DialoguePanel"]
+layout_mode = 0
+offset_left = 232.671
+offset_top = 15.0
+offset_right = 439.671
+offset_bottom = 61.0
+theme_override_fonts/font = ExtResource("3_smvbx")
+theme_override_font_sizes/font_size = 32
+text = "SpeakerName"
+vertical_alignment = 1
+
+[node name="Line2D" type="Line2D" parent="DialoguePanel"]
+position = Vector2(229.911, 78)
+scale = Vector2(0.291062, 0.52)
+points = PackedVector2Array(800, 0, 0, 0)
+
+[node name="Dialogue" type="RichTextLabel" parent="DialoguePanel"]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 90.0
+offset_right = 813.0
+offset_bottom = 204.0
+theme_override_fonts/normal_font = ExtResource("3_smvbx")
+theme_override_font_sizes/normal_font_size = 32
+
+[node name="DialogueSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_61474")
