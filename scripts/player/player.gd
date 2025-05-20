@@ -19,16 +19,19 @@ var is_knockback: bool = false
 var cursor_pos: int = 1
 var cursor_offset = Vector2(10, -20)
 
-var cooldowns: Dictionary = {
+var spells: Dictionary = {
 	"1" = {
+		"name" = "fire_ball",
 		"cooldown" = false,
 		"cooldown_time_passed" = 0
 	},
 	"2" = {
+		"name" = "fire_ring",
 		"cooldown" = false,
 		"cooldown_time_passed" = 0
 	},
 	"3" = {
+		"name" = "none",
 		"cooldown" = false,
 		"cooldown_time_passed" = 0
 	},
@@ -44,6 +47,8 @@ func _ready() -> void:
 	
 	$PlayerUI/UIContainer/Spells/Spell1/Name.text = "Fireball"
 	$PlayerUI/UIContainer/Spells/Spell1/SpellIconHolder/Icon.texture = preload("res://assets/sprites/vfx/fire/fireball.png")
+	$PlayerUI/UIContainer/Spells/Spell2/Name.text = "Fire Ring"
+	$PlayerUI/UIContainer/Spells/Spell2/SpellIconHolder/Icon.texture = preload("res://assets/sprites/vfx/fire/firecircle.png")
 	swing_cursor()
 	
 func _process(_delta: float) -> void:
@@ -55,7 +60,7 @@ func _process(_delta: float) -> void:
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Cast.visible = false
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Prepare/PrepareLabel.text = "Prepare Spell"
 		else:
-			selected_spell = Spells.spells["fire_ball"]
+			selected_spell = Spells.spells[spells[str(cursor_pos)]["name"]]
 			Globals.change_mouse_icon(Globals.mouse_icons["mouse_circle_x_icon"])
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Prepare/PrepareLabel.text = "Cancel Spell"
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Cast.visible = true
@@ -75,13 +80,16 @@ func _process(_delta: float) -> void:
 		elif cursor_pos == 3:
 			cursor_pos = 1
 			cursor.position = spell_1.position - cursor_offset
+			
+		selected_spell = Spells.spells[spells[str(cursor_pos)]["name"]]
+		print(selected_spell)
 
 	if Input.is_action_just_pressed("cast"):
 		if selected_spell == Spells.spells["none"]: return
 		
 		var choice: int = cursor_pos
 		
-		if cooldowns[str(choice)]["cooldown"]: return
+		if spells[str(choice)]["cooldown"]: return
 		
 		var spell_scene: PackedScene = load(Spells.spells[selected_spell[2]][1])
 		var instanced_spell: BaseSpell = spell_scene.instantiate()
@@ -89,9 +97,16 @@ func _process(_delta: float) -> void:
 			animated_sprite_2d.flip_h = true
 		elif get_global_mouse_position().x > global_position.x:
 			animated_sprite_2d.flip_h = false
-		animated_sprite_2d.play("cast")
+		if selected_spell[0][1] == "Orbital":
+			animated_sprite_2d.play("staff_cast")
+		else:
+			animated_sprite_2d.play("cast")
 		
-		get_parent().add_child(instanced_spell)
+		if selected_spell[0][1] == "Orbital":
+			add_child(instanced_spell)
+		else:
+			get_parent().add_child(instanced_spell)
+			
 		instanced_spell.global_position = global_position
 		instanced_spell.cast(get_global_mouse_position())
 		
@@ -145,7 +160,7 @@ func swing_cursor() -> void:
 	swing_cursor()
 	
 func spell_cooldown(spell_index: int, cooldown_time: float) -> void:
-	cooldowns[str(spell_index)]["cooldown"] = true
+	spells[str(spell_index)]["cooldown"] = true
 	var path: String = "PlayerUI/UIContainer/Spells/Spell" + str(spell_index) + "/SpellIconHolder/Icon/Cooldown"
 	var node: Label = get_node(path)
 	node.text = str(cooldown_time) + "s"
@@ -155,15 +170,15 @@ func spell_cooldown(spell_index: int, cooldown_time: float) -> void:
 	
 	icon.modulate = Color(1, 1, 1, 0.5)
 	
-	while cooldowns[str(spell_index)]["cooldown_time_passed"] < cooldown_time:
+	while spells[str(spell_index)]["cooldown_time_passed"] < cooldown_time:
 		await Globals.wait(0.1)
-		cooldowns[str(spell_index)]["cooldown_time_passed"] += 0.1
-		node.text = str(abs(Globals.round_place(cooldown_time - cooldowns[str(spell_index)]["cooldown_time_passed"], 2))) + "s"
+		spells[str(spell_index)]["cooldown_time_passed"] += 0.1
+		node.text = str(abs(Globals.round_place(cooldown_time - spells[str(spell_index)]["cooldown_time_passed"], 2))) + "s"
 	
 	icon.modulate = Color(1, 1, 1, 1)
 	
-	cooldowns[str(spell_index)]["cooldown"] = false
-	cooldowns[str(spell_index)]["cooldown_time_passed"] = 0
+	spells[str(spell_index)]["cooldown"] = false
+	spells[str(spell_index)]["cooldown_time_passed"] = 0
 	node.text = "0s"
 
 

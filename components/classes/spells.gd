@@ -7,5 +7,5 @@ static var spells: Dictionary[String, Array] = {
 	# a modifier
 	"none" = [["None", "None", "None"], null, "none"],
 	"fire_ball" = [["Fire", "Missle", "None"], "res://scenes/spells/fireball.tscn", "fire_ball"],
-	"fire_beam" = [["Fire", "Beam", "None"], "res://scenes/spells/fireball.tscn", "fire_beam"],
+	"fire_ring" = [["Fire", "Orbital", "None"], "res://scenes/spells/fire_ring.tscn", "fire_ring"],
 }

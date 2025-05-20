@@ -549,7 +549,6 @@ theme_override_font_sizes/font_size = 24
 text = "SpellName"
 
 [node name="Spell2" type="Control" parent="PlayerUI/UIContainer/Spells"]
-visible = false
 anchors_preset = 0
 offset_left = 12.0
 offset_top = 146.0
