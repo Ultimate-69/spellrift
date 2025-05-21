@@ -18,7 +18,7 @@ var mouse_icons: Dictionary[String, Texture2D] = {
 func change_mouse_icon(mouse_icon) -> void:
 	Input.set_custom_mouse_cursor(mouse_icon)
 
-# waits for the seconds provided
+## waits for the seconds provided
 func wait(time: float) -> void:
 	await get_tree().create_timer(time).timeout
 	

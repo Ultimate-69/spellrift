@@ -1,0 +1,82 @@
+[gd_scene load_steps=14 format=3 uid="uid://egjuh4eqcs3o"]
+
+[ext_resource type="PackedScene" uid="uid://o7a46sgd08k5" path="res://scenes/entities/npc.tscn" id="1_70pj4"]
+[ext_resource type="Script" uid="uid://bw3gmebmh5ck2" path="res://scripts/entities/blacksmith.gd" id="2_fikn3"]
+[ext_resource type="Texture2D" uid="uid://bvl2h6xyld2gi" path="res://assets/sprites/entities/npcs/BLACKSMITH.png" id="3_fikn3"]
+[ext_resource type="AudioStream" uid="uid://cewpdnvylhknb" path="res://assets/sfx/npcs/blacksmith.mp3" id="4_04m3j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_04m3j"]
+atlas = ExtResource("3_fikn3")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ptlb"]
+atlas = ExtResource("3_fikn3")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb3tx"]
+atlas = ExtResource("3_fikn3")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32qiy"]
+atlas = ExtResource("3_fikn3")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_64whe"]
+atlas = ExtResource("3_fikn3")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7qc47"]
+atlas = ExtResource("3_fikn3")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68pd3"]
+atlas = ExtResource("3_fikn3")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjj52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_04m3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ptlb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb3tx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32qiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_64whe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7qc47")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68pd3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fikn3"]
+size = Vector2(64, 55)
+
+[node name="Blacksmith" instance=ExtResource("1_70pj4")]
+script = ExtResource("2_fikn3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_sjj52")
+autoplay = "default"
+frame_progress = 0.776329
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-7, 2.5)
+shape = SubResource("RectangleShape2D_fikn3")
+
+[node name="NPCAudio" parent="." index="2"]
+stream = ExtResource("4_04m3j")
+pitch_scale = 1.1

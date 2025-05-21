@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ojumtx372esk"]
+[gd_scene load_steps=7 format=3 uid="uid://ojumtx372esk"]
 
 [ext_resource type="PackedScene" uid="uid://cllyx5s1lqyon" path="res://scenes/entities/player.tscn" id="1_iv81d"]
 [ext_resource type="Texture2D" uid="uid://b58wrdk1inej4" path="res://icon.svg" id="2_ykvyi"]
 [ext_resource type="PackedScene" uid="uid://devho3o5pshh1" path="res://scenes/entities/dummy.tscn" id="3_vxxun"]
 [ext_resource type="PackedScene" uid="uid://dxairy1nox40t" path="res://scenes/entities/attacking_dummy.tscn" id="4_64g0v"]
+[ext_resource type="PackedScene" uid="uid://egjuh4eqcs3o" path="res://scenes/entities/blacksmith.tscn" id="5_fhdku"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ykvyi"]
 size = Vector2(84, 655)
@@ -70,3 +71,7 @@ position = Vector2(572, 331)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.485, 1.485)
+
+[node name="Blacksmith" parent="." instance=ExtResource("5_fhdku")]
+position = Vector2(850, 382)
+scale = Vector2(1.4, 1.4)

@@ -9,6 +9,18 @@ var tween: Tween
 
 func _ready() -> void:
 	hitbox_component.area_entered.connect(body_entered)
+
+	hitbox_component.body_entered.connect(func(body: Node2D):
+		if body is Player:
+			return
+
+		velocity = Vector2(0, 0)
+		animated_sprite_2d.play("explode")
+		spell_hit_audio_player.play()
+		await animated_sprite_2d.animation_finished
+		queue_free()
+	)
+
 	spell_audio_player.play()
 	
 	

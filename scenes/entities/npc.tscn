@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://o7a46sgd08k5"]
+
+[ext_resource type="Script" uid="uid://cee8d1mht514c" path="res://scripts/entities/npc.gd" id="1_iify0"]
+
+[node name="NPC" type="StaticBody2D"]
+script = ExtResource("1_iify0")
+
+[node name="NPCAudio" type="AudioStreamPlayer2D" parent="."]
+autoplay = true

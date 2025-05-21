@@ -455,6 +455,7 @@ theme_override_font_sizes/font_size = 32
 text = "Prepare Spell"
 
 [node name="Choose" type="HBoxContainer" parent="PlayerUI/UIContainer/Controls/HBoxContainer"]
+visible = false
 layout_mode = 2
 
 [node name="ChooseTexture" type="TextureRect" parent="PlayerUI/UIContainer/Controls/HBoxContainer/Choose"]

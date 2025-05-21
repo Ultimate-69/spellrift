@@ -57,6 +57,7 @@ func _process(_delta: float) -> void:
 		if selected_spell != Spells.spells["none"]:
 			Globals.change_mouse_icon(null) 
 			selected_spell = Spells.spells["none"]
+			$PlayerUI/UIContainer/Controls/HBoxContainer/Choose.visible = false
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Cast.visible = false
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Prepare/PrepareLabel.text = "Prepare Spell"
 		else:
@@ -64,9 +65,12 @@ func _process(_delta: float) -> void:
 			Globals.change_mouse_icon(Globals.mouse_icons["mouse_circle_x_icon"])
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Prepare/PrepareLabel.text = "Cancel Spell"
 			$PlayerUI/UIContainer/Controls/HBoxContainer/Cast.visible = true
+			$PlayerUI/UIContainer/Controls/HBoxContainer/Choose.visible = true
 	
 	# E
 	if Input.is_action_just_pressed("choose_spell"):
+		if selected_spell == Spells.spells["none"]: return
+		
 		if cursor_pos == 1 and spell_2.visible:
 			cursor_pos = 2
 			cursor.position = spell_2.position - cursor_offset
