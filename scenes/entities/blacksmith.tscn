@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://egjuh4eqcs3o"]
+[gd_scene load_steps=16 format=3 uid="uid://egjuh4eqcs3o"]
 
 [ext_resource type="PackedScene" uid="uid://o7a46sgd08k5" path="res://scenes/entities/npc.tscn" id="1_70pj4"]
 [ext_resource type="Script" uid="uid://bw3gmebmh5ck2" path="res://scripts/entities/blacksmith.gd" id="2_fikn3"]
 [ext_resource type="Texture2D" uid="uid://bvl2h6xyld2gi" path="res://assets/sprites/entities/npcs/BLACKSMITH.png" id="3_fikn3"]
+[ext_resource type="Resource" uid="uid://if76k8kc7yeq" path="res://dialogues/blacksmith.dialogue" id="3_rb3tx"]
 [ext_resource type="AudioStream" uid="uid://cewpdnvylhknb" path="res://assets/sfx/npcs/blacksmith.mp3" id="4_04m3j"]
 [ext_resource type="PackedScene" uid="uid://ui6tx2v5jtlk" path="res://components/dialogue_component.tscn" id="5_7ptlb"]
 
@@ -69,7 +70,7 @@ size = Vector2(64, 55)
 [node name="Blacksmith" instance=ExtResource("1_70pj4")]
 script = ExtResource("2_fikn3")
 npc_name = "Blacksmith"
-npc_first_meet_dialogue = "Hello there, friend! How are you doing today? I am the blacksmith, proud to serve all the dungeon dwellers."
+dialogue_resource = ExtResource("3_rb3tx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_sjj52")

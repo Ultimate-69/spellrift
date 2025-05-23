@@ -11,10 +11,12 @@ class_name DialogueComponent extends Node2D
 var default_scale: Vector2
 var tween: Tween
 
+var is_inside: bool = false
+
 signal dialogue_started
 
 func _unhandled_key_input(event: InputEvent) -> void:
-    if event.is_action("interact"):
+    if event.is_action_released("interact") and is_inside:
         dialogue_started.emit()
 
 func _ready() -> void:
@@ -24,12 +26,14 @@ func _ready() -> void:
 
     dialogue_area.body_entered.connect(func(body):
         if body is Player:
+            is_inside = true
             if prompt_visible:
                 show_prompt()
         )
 
     dialogue_area.body_exited.connect(func(body):
         if body is Player:
+            is_inside = false
             if prompt_visible:
                 hide_prompt()
         )

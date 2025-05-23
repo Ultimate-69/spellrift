@@ -51,9 +51,9 @@ func _ready() -> void:
     $PlayerUI/UIContainer/Spells/Spell2/SpellIconHolder/Icon.texture = preload("res://assets/sprites/vfx/fire/firecircle.png")
     swing_cursor()
     
-func _process(_delta: float) -> void:
+func _unhandled_input(event: InputEvent) -> void:
     # prepare spell, B
-    if Input.is_action_just_pressed("spell_select"):
+    if event.is_action_released("spell_select"):
         if selected_spell != Spells.spells["none"]:
             Globals.change_mouse_icon(null) 
             selected_spell = Spells.spells["none"]
@@ -68,7 +68,7 @@ func _process(_delta: float) -> void:
             $PlayerUI/UIContainer/Controls/HBoxContainer/Choose.visible = true
     
     # E
-    if Input.is_action_just_pressed("choose_spell"):
+    if event.is_action_released("choose_spell"):
         if selected_spell == Spells.spells["none"]: return
         
         if cursor_pos == 1 and spell_2.visible:
@@ -86,8 +86,12 @@ func _process(_delta: float) -> void:
             cursor.position = spell_1.position - cursor_offset
             
         selected_spell = Spells.spells[spells[str(cursor_pos)]["name"]]
-
-    if Input.is_action_just_pressed("cast"):
+        
+    if event.is_action_released("hide_controls"):
+        controls.visible = not controls.visible
+        
+func _process(_delta: float) -> void:
+    if Input.is_action_pressed("cast"):
         if selected_spell == Spells.spells["none"]: return
         
         var choice: int = cursor_pos
@@ -114,9 +118,6 @@ func _process(_delta: float) -> void:
         instanced_spell.cast(get_global_mouse_position())
         
         spell_cooldown(choice, instanced_spell.spell_cooldown)
-        
-    if Input.is_action_just_pressed("hide_controls"):
-        controls.visible = not controls.visible
 
 func _physics_process(_delta: float) -> void:
     if is_knockback:
