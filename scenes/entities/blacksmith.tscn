@@ -68,6 +68,8 @@ size = Vector2(64, 55)
 
 [node name="Blacksmith" instance=ExtResource("1_70pj4")]
 script = ExtResource("2_fikn3")
+npc_name = "Blacksmith"
+npc_first_meet_dialogue = "Hello there, friend! How are you doing today? I am the blacksmith, proud to serve all the dungeon dwellers."
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_sjj52")

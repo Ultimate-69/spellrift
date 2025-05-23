@@ -3,9 +3,9 @@ extends Control
 const START_POS = Vector2(1160, 484)
 const END_POS = Vector2(691, 484)
 
-@onready var panel: Panel = $Panel
-@onready var title: Label = $Panel/Title
-@onready var body: Label = $Panel/Body
+@onready var panel: Panel = $CanvasLayer/Panel
+@onready var title: Label = $CanvasLayer/Panel/Title
+@onready var body: Label = $CanvasLayer/Panel/Body
 @onready var notification_sound: AudioStreamPlayer = $NotificationSound
 
 var tween: Tween

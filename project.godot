@@ -22,11 +22,15 @@ Todo="*res://scripts/globals/todo.gd"
 Globals="*res://scripts/globals/globals.gd"
 NotificationManager="*res://scenes/notification_manager.tscn"
 Enums="*res://scripts/globals/enums.gd"
-DialogueManager="*res://scenes/dialogue_manager.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
 window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [file_customization]
 
