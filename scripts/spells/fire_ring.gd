@@ -44,7 +44,7 @@ func cast(target: Vector2) -> void:
 	var clone_count: int = 6
 	var radius: float = 100.0  # Distance from the player
 	for i in range(clone_count):
-		var angle: float = (TAU / clone_count) * i  # TAU is 2 * PI
+		var angle: float = (TAU / clone_count) * i
 		var offset: Vector2 = Vector2(cos(angle), sin(angle)) * radius
 		var clone: FireRing = duplicate()
 		get_parent().add_child(clone)
