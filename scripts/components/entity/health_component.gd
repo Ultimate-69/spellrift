@@ -19,50 +19,50 @@ signal damaged
 signal regened
 
 func _ready() -> void:
-	health = max_health
-	if show_health:
-		health_bar.max_value = max_health
-		health_bar.value = max_health
-		health_bar.visible = true
-		health_bar.reparent(entity_sprite, false)
-		health_bar.position = entity_sprite.position + health_offset
-	else:
-		health_bar.visible = false
+    health = max_health
+    if show_health:
+        health_bar.max_value = max_health
+        health_bar.value = max_health
+        health_bar.visible = true
+        health_bar.reparent(entity_sprite, false)
+        health_bar.position = entity_sprite.position + health_offset
+    else:
+        health_bar.visible = false
 
 func take_damage(attack: Attack) -> void:
-	health -= attack.damage
-	damaged.emit()
-	hit_sound.play()
-	
-	if show_health:
-		tween = create_tween()
-		tween.tween_property(health_bar, "value", health, 0.5)
-		
-	if hit_flash:
-		entity_sprite.modulate = Color(1.5, 0, 0)
-		
-		await Globals.wait(0.1)
-		
-		entity_sprite.modulate = Color(2, 2, 2)
-		
-		tween = create_tween()
-		tween.tween_property(entity_sprite, "scale", scale + Vector2(0.1, 0.1), 0.1).set_trans(tween.TRANS_SPRING)
-		
-		await Globals.wait(0.1)
-		
-		entity_sprite.modulate = Color(1, 1, 1)
-		
-		tween = create_tween()
-		tween.tween_property(entity_sprite, "scale", scale - Vector2(0.1, 0.1), 0.1).set_ease(Tween.EASE_IN_OUT)
-		
-	if health <= 0:
-		health = 0
-		# dead
-		on_entity_death.emit()
-		
+    health -= attack.damage
+    damaged.emit()
+    hit_sound.play()
+    
+    if show_health:
+        tween = create_tween()
+        tween.tween_property(health_bar, "value", health, 0.5)
+        
+    if hit_flash:
+        entity_sprite.modulate = Color(1.5, 0, 0)
+        
+        await Globals.wait(0.1)
+        
+        entity_sprite.modulate = Color(2, 2, 2)
+        
+        tween = create_tween()
+        tween.tween_property(entity_sprite, "scale", scale + Vector2(0.1, 0.1), 0.1).set_trans(tween.TRANS_SPRING)
+        
+        await Globals.wait(0.1)
+        
+        entity_sprite.modulate = Color(1, 1, 1)
+        
+        tween = create_tween()
+        tween.tween_property(entity_sprite, "scale", scale - Vector2(0.1, 0.1), 0.1).set_ease(Tween.EASE_IN_OUT)
+        
+    if health <= 0:
+        health = 0
+        # dead
+        on_entity_death.emit()
+        
 func regen_health(regen: int) -> void:
-	regened.emit()
-	health += regen
-	if show_health:
-		tween = create_tween()
-		tween.tween_property(health_bar, "value", health, 0.5)
+    regened.emit()
+    health += regen
+    if show_health:
+        tween = create_tween()
+        tween.tween_property(health_bar, "value", health, 0.5)

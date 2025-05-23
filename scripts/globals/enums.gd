@@ -1,23 +1,23 @@
 extends Node
 
 enum elements {
-	None,
-	Fire,
-	Ice,
-	Lightning,
+    None,
+    Fire,
+    Ice,
+    Lightning,
 }
 
 enum types {
-	None,
-	Missle,
-	Orbital,
-	Trap
+    None,
+    Missle,
+    Orbital,
+    Trap
 }
 
 enum modifiers {
-	None,
-	Homing,
-	Pierce,
-	Split,
-	Delay,
+    None,
+    Homing,
+    Pierce,
+    Split,
+    Delay,
 }

@@ -14,4 +14,4 @@ class_name BaseSpell extends CharacterBody2D
 
 @warning_ignore("unused_parameter")
 func cast(target: Vector2) -> void:
-	pass
+    pass
