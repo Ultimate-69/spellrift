@@ -3,6 +3,8 @@ extends Node
 const SAVE_PATH = "user://save.spell"
 const PASSWORD = "9fa!DN49D+rBS^Hdap2^Ce&!WD^uxaRSj3f#UfdFHdgQ7EgY)g)d4YbTamB$J#TY"
 
+var loaded: bool = false
+
 var save_dict: Dictionary = {
     # Global Data
     "runs" = 0,
@@ -21,6 +23,7 @@ var save_dict: Dictionary = {
     "current_character" = "apprentice", # default character
     "inventory" = [],
     "upgrades" = [],
+    "npcs" = [],
 }
 
 func save_game() -> void:
@@ -36,6 +39,7 @@ func load_game():
      FileAccess.READ, PASSWORD)
     
     if file == null:
+        loaded = true
         if FileAccess.get_open_error() == ERR_FILE_NOT_FOUND:
             # no file found
             return 1
@@ -45,4 +49,6 @@ func load_game():
     else:
         var data: Dictionary = JSON.parse_string(file.get_as_text())
         file.close()
+        save_dict = data
+        loaded = true
         return data

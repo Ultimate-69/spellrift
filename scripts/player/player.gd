@@ -13,7 +13,7 @@ const SMOOTH_FACTOR: float = 100.0
 @onready var spell_3: Control = $PlayerUI/UIContainer/Spells/Spell3
 
 var tween: Tween
-
+var direction: Vector2
 var selected_spell: Array = Spells.spells["none"]
 var is_knockback: bool = false
 var cursor_pos: int = 1
@@ -87,6 +87,10 @@ func _unhandled_input(event: InputEvent) -> void:
             
         selected_spell = Spells.spells[spells[str(cursor_pos)]["name"]]
         
+    if event.is_action("move_down") or event.is_action("move_left") or event.is_action("move_right") \
+        or event.is_action("move_up"):
+            direction  = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+        
     if event.is_action_released("hide_controls"):
         controls.visible = not controls.visible
         
@@ -124,7 +128,6 @@ func _physics_process(_delta: float) -> void:
         move_and_slide()
         return
         
-    var direction: Vector2 = Input.get_vector("move_left", "move_right", "move_up", "move_down")
     if direction:
         if not footstep_component.is_footstep_playing():
             footstep_component.play_footstep()

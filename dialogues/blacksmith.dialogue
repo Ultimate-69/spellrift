@@ -1,11 +1,40 @@
 ~ start
-Blacksmith: [[Hi|Hello|Howdy]], this is some dialogue.
-Blacksmith: Here are some choices.
-- First one
-	Blacksmith: You picked the first one.
-- Second one
-	Blacksmith: You picked the second one.
-- Start again => start
-- End the conversation => END
-Blacksmith: For more information see the online documentation.
+if not SaveManager.save_dict["npcs"].has("blacksmith"):
+	Blacksmith: Hello there, friend! How do you do?
+	Blacksmith: These dungeons are fierce and savage, but I know my way around them.
+	Blacksmith: But you look new here. And if you're not ready, the savages here will tear you right up!
+	Blacksmith: For that reason, I'm here to help if you ever need me. Provided you have gold, of course.
+	Blacksmith: I'm generous, but I still need to live!
+	Blacksmith: You may find me in several places around here. I move often, and I have my own ways through the dungeons.
+	Blacksmith: Ways that are safer than the ones you go through, at least.
+	Blacksmith: If you ever need any help, I'm always here, anyways.
+	do DialogueStates.set_npc_met("blacksmith")
+
+%2 Blacksmith: How can I help you, friend?
+% Blacksmith: You know what to say if you need me.
+%2 Blacksmith: Well, need something?
+
+- I have a few questions...
+	Blacksmith: Ask away!
+	if SaveManager.save_dict["runs"] > 1:
+		- How did I come back to life? I'm pretty sure I died...
+			Blacksmith: Eh? What're you talking about? Did you hit your head too hard or something?
+			Blacksmith: If you're serious, I'd go ask the Alchemist. That freak knows a lot about this place.
+			Blacksmith: If you can find 'em, that is...
+			=> END
+		- How can I get more gold?
+			Blacksmith: You just slaughter the creatures you find here. I've also heard there's some treasure scattered about the rooms.
+			=> END
+		- How do I make my magic stronger?
+			Blacksmith: Only wizard I know here is the Alchemist. I'd seek 'em out if I were you, I don't know a lot about magic.
+			=> END
+	- How can I get more gold?
+		Blacksmith: You just slaughter the creatures you find here. I've also heard there's some treasure scattered about the rooms.
+	- How do I make my magic stronger?
+		Blacksmith: Only wizard I know here is the Alchemist. I'd seek 'em out if I were you, I don't know a lot about magic.
+- Can I see what you have?
+	Blacksmith: Of course! Let's see here...
+	do NpcActions.activate_npc_action("blacksmith")
+- Nevermind, it's nothing.
+	Blacksmith: See you later, then.
 => END
