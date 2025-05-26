@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bcgxx2halbgsu"]
+
+[ext_resource type="Shader" uid="uid://dbntccdyl5ple" path="res://shaders/ui/background_paint.gdshader" id="1_bdsti"]
+
+[resource]
+shader = ExtResource("1_bdsti")
+shader_parameter/polar_coordinates = false
+shader_parameter/polar_center = Vector2(0.5, 0.5)
+shader_parameter/polar_zoom = 1.0
+shader_parameter/polar_repeat = 1.0
+shader_parameter/spin_rotation = 0.0
+shader_parameter/spin_speed = 5.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.926102, 0, 0.216013, 1)
+shader_parameter/colour_2 = Color(0, 0, 0, 1)
+shader_parameter/colour_3 = Color(0.191266, 0, 0.0356674, 1)
+shader_parameter/contrast = 2.0
+shader_parameter/spin_amount = 0.47
+shader_parameter/pixel_filter = 700.005

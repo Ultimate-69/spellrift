@@ -2,6 +2,8 @@ extends Control
 
 @onready var ui_navigator: UINavigator = $UINavigator
 
+@export var shader: ShaderMaterial
+
 @onready var version: Label = $Version
 
 @onready var continue_button: Button = $VBoxContainer/CenterContainer/Continue
@@ -29,6 +31,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 
 func _ready() -> void:
     connect_signals()
+    shader.set_shader_parameter("colour_1", Color(randf_range(0, 1), randf_range(0, 1), randf_range(0, 1), 1))
     
     version.text = Globals.VERSION_NUM
     continue_button.grab_focus()

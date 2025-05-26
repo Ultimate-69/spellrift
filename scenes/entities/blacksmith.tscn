@@ -84,6 +84,7 @@ shape = SubResource("RectangleShape2D_fikn3")
 [node name="NPCAudio" parent="." index="2"]
 stream = ExtResource("4_04m3j")
 pitch_scale = 1.1
+max_distance = 1000.0
 
 [node name="DialogueComponent" parent="." index="3" instance=ExtResource("5_7ptlb")]
 prompt_offset = Vector2(0, -40)

@@ -12,6 +12,8 @@ const SMOOTH_FACTOR: float = 100.0
 @onready var spell_2: Control = $PlayerUI/UIContainer/Spells/Spell2
 @onready var spell_3: Control = $PlayerUI/UIContainer/Spells/Spell3
 
+var can_control: bool = true
+
 var tween: Tween
 var direction: Vector2
 var selected_spell: Array = Spells.spells["none"]
@@ -45,6 +47,8 @@ func _ready() -> void:
     health_bar.value = health_component.health
     health_component.damaged.connect(health_changed)
     
+    NpcActions.npc_action_activated.connect(npc_activated)
+    
     $PlayerUI/UIContainer/Spells/Spell1/Name.text = "Fireball"
     $PlayerUI/UIContainer/Spells/Spell1/SpellIconHolder/Icon.texture = preload("res://assets/sprites/vfx/fire/fireball.png")
     $PlayerUI/UIContainer/Spells/Spell2/Name.text = "Fire Ring"
@@ -53,6 +57,7 @@ func _ready() -> void:
     
 func _unhandled_input(event: InputEvent) -> void:
     # prepare spell, B
+    if !can_control: return
     if event.is_action_released("spell_select"):
         if selected_spell != Spells.spells["none"]:
             Globals.change_mouse_icon(null) 
@@ -95,6 +100,7 @@ func _unhandled_input(event: InputEvent) -> void:
         controls.visible = not controls.visible
         
 func _process(_delta: float) -> void:
+    if !can_control: return
     if Input.is_action_pressed("cast"):
         if selected_spell == Spells.spells["none"]: return
         
@@ -128,6 +134,8 @@ func _physics_process(_delta: float) -> void:
         move_and_slide()
         return
         
+    if !can_control: return
+        
     if direction:
         if not footstep_component.is_footstep_playing():
             footstep_component.play_footstep()
@@ -153,6 +161,14 @@ func _physics_process(_delta: float) -> void:
         velocity.y = move_toward(velocity.y, 0, SMOOTH_FACTOR - SPEED / 10)
 
     move_and_slide()
+    
+func npc_activated(npc_name: String) -> void:
+    npc_name[0] = npc_name[0].to_upper()
+    var node: Panel = get_node("PlayerUI/UIContainer/" + npc_name)
+    var close_node: Button = get_node("PlayerUI/UIContainer/" + npc_name + "/Close")
+    node.visible = true
+    can_control = false
+    close_node.grab_focus()
 
 func health_changed() -> void:
     tween = create_tween()
@@ -190,5 +206,6 @@ func spell_cooldown(spell_index: int, cooldown_time: float) -> void:
     node.text = "0s"
     node.visible = false
 
-
-    
+func _on_close_pressed() -> void:
+    $PlayerUI/UIContainer/Blacksmith.visible = false
+    can_control = true

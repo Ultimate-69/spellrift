@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtf6fht1524lv"]
+[gd_scene load_steps=13 format=3 uid="uid://dtf6fht1524lv"]
 
 [ext_resource type="Script" uid="uid://448khrqia3a0" path="res://scripts/common/menu.gd" id="1_yqeox"]
 [ext_resource type="FontFile" uid="uid://c73vy11e137o2" path="res://assets/fonts/Rubik/static/Rubik-Regular.ttf" id="2_4ytvr"]
-[ext_resource type="Shader" uid="uid://dbntccdyl5ple" path="res://shaders/ui/background_paint.gdshader" id="2_70i5f"]
+[ext_resource type="Material" uid="uid://bcgxx2halbgsu" path="res://shaders/materials/menu.tres" id="2_70i5f"]
 [ext_resource type="Theme" uid="uid://iwbldj18fe60" path="res://themes/menu_theme.tres" id="3_con2f"]
 [ext_resource type="FontFile" uid="uid://q41xyy8rvn3r" path="res://assets/fonts/Uncial_Antiqua/UncialAntiqua-Regular.ttf" id="4_mhnvy"]
 [ext_resource type="PackedScene" uid="uid://b5kmyhb8lknkd" path="res://components/ui_navigator.tscn" id="5_4ytvr"]
@@ -10,22 +10,6 @@
 [ext_resource type="Shader" uid="uid://dk7xb7ui7hw8q" path="res://shaders/ui/texture_rect_blur.gdshader" id="6_v86rl"]
 [ext_resource type="Texture2D" uid="uid://dsbi1oninkkrg" path="res://assets/images/keys/kenney_input-prompts_1.4/Keyboard & Mouse/Vector/keyboard_escape.svg" id="8_13sgg"]
 [ext_resource type="AudioStream" uid="uid://d0v5qa8qxni1o" path="res://assets/sfx/back.wav" id="9_i6lef"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mj5lg"]
-shader = ExtResource("2_70i5f")
-shader_parameter/polar_coordinates = false
-shader_parameter/polar_center = Vector2(0.5, 0.5)
-shader_parameter/polar_zoom = 1.0
-shader_parameter/polar_repeat = 1.0
-shader_parameter/spin_rotation = 0.0
-shader_parameter/spin_speed = 5.0
-shader_parameter/offset = Vector2(0, 0)
-shader_parameter/colour_1 = Color(0.926102, 0, 0.216013, 1)
-shader_parameter/colour_2 = Color(0, 0, 0, 1)
-shader_parameter/colour_3 = Color(0.191266, 0, 0.0356674, 1)
-shader_parameter/contrast = 2.0
-shader_parameter/spin_amount = 0.47
-shader_parameter/pixel_filter = 700.005
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v86rl"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -44,9 +28,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqeox")
+shader = ExtResource("2_70i5f")
 
 [node name="BGColor" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_mj5lg")
+material = ExtResource("2_70i5f")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

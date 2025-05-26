@@ -17,6 +17,9 @@ signal dialogue_started
 
 func _unhandled_key_input(event: InputEvent) -> void:
     if event.is_action_released("interact") and is_inside:
+        for i in dialogue_area.get_overlapping_bodies():
+            if i is Player:
+                if not i.can_control: return
         dialogue_started.emit()
 
 func _ready() -> void:
