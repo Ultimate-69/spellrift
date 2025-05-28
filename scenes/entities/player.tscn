@@ -686,6 +686,16 @@ offset_bottom = 556.5
 theme_override_font_sizes/font_size = 32
 text = "Close"
 
+[node name="Reroll" type="Button" parent="PlayerUI/UIContainer/Blacksmith"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = 153.5
+offset_right = 627.0
+offset_bottom = 217.5
+theme_override_fonts/font = ExtResource("2_b6tgf")
+theme_override_font_sizes/font_size = 32
+text = "Reroll Rune - 5 Gold"
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_c5rqy")
 animation = &"staff_cast"

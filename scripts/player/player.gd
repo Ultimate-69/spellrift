@@ -21,6 +21,8 @@ var is_knockback: bool = false
 var cursor_pos: int = 1
 var cursor_offset = Vector2(10, -20)
 
+var inventory: Array[InventoryItem] = []
+
 var spells: Dictionary = {
     "1" = {
         "name" = "fire_ball",
@@ -46,6 +48,8 @@ func _ready() -> void:
     health_bar.max_value = health_component.max_health
     health_bar.value = health_component.health
     health_component.damaged.connect(health_changed)
+
+    inventory = load_inventory()
     
     NpcActions.npc_action_activated.connect(npc_activated)
     
@@ -209,3 +213,13 @@ func spell_cooldown(spell_index: int, cooldown_time: float) -> void:
 func _on_close_pressed() -> void:
     $PlayerUI/UIContainer/Blacksmith.visible = false
     can_control = true
+
+func load_inventory() -> Array[InventoryItem]:
+    #TODO: IMPLEMENT
+    while not SaveManager.loaded:
+        pass
+    var inventory_loaded = SaveManager.save_dict["inventory"]
+    if inventory_loaded != []:
+        return inventory_loaded
+    else:
+        return []
